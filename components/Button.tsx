@@ -2,9 +2,10 @@ import React from "react";
 
 interface ButtonTypes {
 	children: React.ReactNode;
-	className: string;
+	className?: string;
 	type: "button" | "reset" | "submit" | undefined;
 	tabIndex?: number;
+	noArrow?: Boolean;
 	handleClick?: () => void;
 }
 
@@ -13,6 +14,7 @@ const Button = ({
 	className,
 	type,
 	tabIndex,
+	noArrow,
 	handleClick,
 }: ButtonTypes) => {
 	return (
@@ -22,7 +24,9 @@ const Button = ({
 				onClick={handleClick}
 				type={type}
 				className={`${className} cursor-pointer`}>
-				{children}
+				<p>
+					{children} {!noArrow && <span className="text-lg">&#8594;</span>}
+				</p>
 			</button>
 		</div>
 	);
