@@ -112,3 +112,34 @@ export const teamsData = [
 		title: "Scalability",
 	},
 ];
+
+export const sectionData = [
+	{
+		image: "/industry-fintech.svg",
+		title: "Fintech Solution",
+		text: "Revolutionize your industry with our innovative IoT solutions. Our software development services offer connected manufacturing, pollution control, smart transportation, and intelligent farming, agriculture, and forestry. With our expertise, you can harness the power of technology to increase efficiency, reduce waste, and optimize operations for a sustainable future.",
+		caption: "Transforming Fintech with AI",
+		chip1: "Fraud detection",
+		chip2: "Transaction categorisation",
+		chip3: "Risk Scoring",
+		order: true,
+	},
+	{
+		image: "/industry-iot.webp",
+		title: "Industrial IoT",
+		text: "Revolutionize your industry with our innovative IoT solutions. Oursoftware development services offer connected manufacturing,pollution control, smart transportation, and intelligent farming,agriculture, and forestry. With our expertise, you can harness thepower of technology to increase efficiency, reduce waste, andoptimize operations for a sustainable future.",
+		caption: "Providing a better connected experience",
+		chip1: "Connected manufacturing",
+		chip2: "Aviation",
+		chip3: "Smart Building",
+	},
+	{
+		image: "/industry-education.webp",
+		title: "Smart Education",
+		text: "Elevate your education institution with our comprehensive software solutions. Learning management, course offerings, professional training, certification, and school management tools to streamline your operations and enhance your students' learning experience. Trust us to provide the cutting-edge technology and support you need to thrive in the ever-evolving education industry.",
+		caption: "Elevate your Education Institution",
+		chip1: "Learning Management",
+		chip2: "Course offering",
+		chip3: "Professional Training",
+	},
+];

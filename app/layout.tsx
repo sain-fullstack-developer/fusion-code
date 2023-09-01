@@ -5,9 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Task Management Application",
-	description:
-		"Stay organized and on track with our easy-to-use task management application. Track your tasks, set deadlines, and collaborate with others to get things done. Try it today for free!",
+	title: "Geeks Inventions",
+	description: "Assignment Animated Landing page",
 };
 
 export default function RootLayout({

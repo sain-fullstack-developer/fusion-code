@@ -15,7 +15,7 @@ const Footer = (props: Props) => {
 		"Privacy Policy",
 	];
 	return (
-		<footer className="flex justify-evenly gap-6 bg-primary px-12 py-6">
+		<footer className="grid md:flex md:justify-evenly gap-6 bg-primary px-12 py-6">
 			<section>
 				<Image
 					src="/geeks-logo-white.svg"
@@ -30,7 +30,7 @@ const Footer = (props: Props) => {
 				</p>
 			</section>
 			<section className="">
-				<ul className="flex justify-evenly gap-4 text-white text-lg">
+				<ul className="grid md:flex md:justify-evenly gap-4 text-white text-lg">
 					{navList.map((nav, index) => (
 						<li key={index}>{nav}</li>
 					))}
