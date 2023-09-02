@@ -10,6 +10,14 @@ module.exports = {
 			fontFamily: {
 				branden: "Branden",
 			},
+			backgroundImage: {
+				"hero-pattern": "url('/giworks/equity-hero.webp')",
+			},
+			fontSize: {
+				heading1: "77px",
+				subHeading: "66px",
+				subText: "20px",
+			},
 			screens: {
 				sm: "640px",
 
@@ -35,10 +43,12 @@ module.exports = {
 				forth: "rgb(255,83,0)",
 			},
 			color: {
+				first: "rgb(22,24,28)",
 				secondary: "rgb(255,83,0)",
 			},
 			gridTemplateColumns: {
 				custom: "0.6fr 1fr",
+				custom2: "0.2fr 1fr",
 			},
 		},
 	},
