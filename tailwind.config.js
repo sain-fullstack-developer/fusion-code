@@ -41,6 +41,7 @@ module.exports = {
 				secondary: "rgb(63,44,170)",
 				third: "rgb(1,181,172)",
 				forth: "rgb(255,83,0)",
+				fifth: "#01b5ac",
 			},
 			color: {
 				first: "rgb(22,24,28)",
@@ -49,6 +50,9 @@ module.exports = {
 			gridTemplateColumns: {
 				custom: "0.6fr 1fr",
 				custom2: "0.2fr 1fr",
+			},
+			zIndex: {
+				negetive: -1,
 			},
 		},
 	},
