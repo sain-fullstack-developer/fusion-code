@@ -143,3 +143,83 @@ export const sectionData = [
 		chip3: "Professional Training",
 	},
 ];
+
+export const recentWorks = [
+	{
+		image: "recent-one",
+		title: "Equity Bank",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-two",
+		title: "Travel Ecosystem",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-three",
+		title: "e-Wallet",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-four",
+		title: "Connect Home",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-five",
+		title: "University Management",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-six",
+		title: "Workout Book",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-seven",
+		title: "Grocery Store",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+	{
+		image: "recent-eigth",
+		title: "Cyber Medic",
+		caption: "Bank accounts, Biller management, Loans, Investments",
+		chip1: "BFS",
+		chip2: "Banking",
+		chip3: "Microservice",
+	},
+];
+
+export const nicheData = [
+	{ name: "Events" },
+	{ name: "Travel" },
+	{ name: "Productivity" },
+	{ name: "Media" },
+	{ name: "Health & Fitness" },
+	{ name: "Social Networking" },
+	{ name: "Marketplace" },
+	{ name: "Dating" },
+	{ name: "On-demand Delivery" },
+	{ name: "Taxi Booking" },
+];

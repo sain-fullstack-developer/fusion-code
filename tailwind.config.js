@@ -11,7 +11,14 @@ module.exports = {
 				branden: "Branden",
 			},
 			backgroundImage: {
-				"hero-pattern": "url('/giworks/equity-hero.webp')",
+				"recent-one": "url('/giworks/equity-hero.webp')",
+				"recent-two": "url('/giworks/travel-hero.webp')",
+				"recent-three": "url('/giworks/wallet-hero.webp')",
+				"recent-four": "url('/giworks/smarthome-hero.webp')",
+				"recent-five": "url('/giworks/teachy-hero.webp')",
+				"recent-six": "url('/giworks/workout-hero.webp')",
+				"recent-seven": "url('/giworks/grocery-hero.webp')",
+				"recent-eigth": "url('/giworks/medical-hero.webp')",
 			},
 			fontSize: {
 				heading1: "77px",

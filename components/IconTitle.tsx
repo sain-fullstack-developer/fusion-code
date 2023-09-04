@@ -8,16 +8,31 @@ type Props = {
 	text?: string;
 	modern?: Boolean;
 	underline?: Boolean;
+	id?: number;
+	logoInitial?: {};
+	logoWhileInView?: {};
+	logoTransition?: {};
 };
 
 const IconTitle = (props: Props) => {
-	const { logo, title, modern, text, underline } = props;
+	const {
+		logo,
+		title,
+		modern,
+		text,
+		underline,
+		id,
+		logoInitial,
+		logoWhileInView,
+		logoTransition,
+	} = props;
 	return (
 		<div className="m-auto text-center">
 			<motion.div
-				initial={{ scale: 0 }}
-				whileInView={{ scale: 1 }}
-				transition={{ type: "spring", stiffness: 80 }}>
+				initial={logoInitial}
+				whileInView={logoWhileInView}
+				transition={logoTransition}
+				key={id}>
 				<Image
 					className="mb-6 h-24 w-24 m-auto"
 					src={logo}
@@ -26,10 +41,7 @@ const IconTitle = (props: Props) => {
 					alt="icons"
 				/>
 			</motion.div>
-			<h2
-				className={`${
-					text ? "text-white" : ""
-				} text-2xl font-medium capitalize`}>
+			<h2 className={`${text ? "text-white" : "text-white"} text-2xl`}>
 				{title}
 			</h2>
 			{underline && <hr className="h-[3px] bg-forth w-[200px] m-auto mb-10" />}

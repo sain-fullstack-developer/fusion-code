@@ -1,31 +1,37 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 type Props = {
 	main?: Boolean;
-	headingColor: string;
-	headingFontSize: string;
-	textFontSize: string;
-	textColor: string;
+	headingClass: string;
+	textClass: string;
 	title: string;
 	text: string;
 	underline?: Boolean;
 	dark?: Boolean;
+	initial?: {};
+	whileInView?: {};
+	transition?: {};
 };
 
 const TitleContent = (props: Props) => {
 	const {
 		main,
-		headingColor,
-		headingFontSize,
-		textFontSize,
-		textColor,
+		headingClass,
+		textClass,
 		underline,
 		title,
 		text,
 		dark,
+		initial,
+		whileInView,
+		transition,
 	} = props;
 	return (
-		<div>
+		<motion.div
+			initial={initial}
+			whileInView={whileInView}
+			transition={transition}>
 			{main && (
 				<h1
 					className={`text-heading1 font-medium capitalize ${
@@ -37,16 +43,15 @@ const TitleContent = (props: Props) => {
 			{underline && <hr className="h-[3px] bg-forth w-[200px] m-auto mb-10" />}
 			{!main && (
 				<h3
-					className={`${headingColor} ${headingFontSize} font-medium text-center mb-10`}>
+					className={`${headingClass} font-medium tracking-wider text-center mb-10`}>
 					{title}
 				</h3>
 			)}
 
-			<p
-				className={`${textColor}  max-w-2xl font-medium text-center m-auto ${textFontSize}`}>
+			<p className={`${textClass} max-w-2xl tracking-wider text-center m-auto`}>
 				{text}
 			</p>
-		</div>
+		</motion.div>
 	);
 };
 

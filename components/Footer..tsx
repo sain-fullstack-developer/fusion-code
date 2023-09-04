@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "./Button";
+import { motion } from "framer-motion";
 
 type Props = {};
 
@@ -15,7 +16,11 @@ const Footer = (props: Props) => {
 		"Privacy Policy",
 	];
 	return (
-		<footer className="grid md:flex md:justify-evenly gap-6 bg-primary px-12 py-6">
+		<motion.footer
+			initial={{ opacity: 0 }}
+			whileInView={{ opacity: 1 }}
+			transition={{ duration: 0.8 }}
+			className="grid md:flex md:justify-evenly gap-6 bg-primary px-12 py-6">
 			<section>
 				<Image
 					src="/geeks-logo-white.svg"
@@ -39,12 +44,12 @@ const Footer = (props: Props) => {
 			<section className="mr-auto">
 				<Button
 					type="button"
-					className="border-pixel border-white bg-none rounded-full p-4 text-white hover:bg-white hover:text-black"
+					className="border-pixel border-white bg-none rounded-full px-4 py-2 text-white hover:bg-white hover:text-black"
 					noArrow={true}>
 					Stay tuned for our updates
 				</Button>
 			</section>
-		</footer>
+		</motion.footer>
 	);
 };
 

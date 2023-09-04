@@ -4,8 +4,7 @@ import Image from "next/image";
 import React from "react";
 import ChipText from "./ChipText";
 import Button from "./Button";
-import { motion, useScroll } from "framer-motion";
-import { theme } from "../tailwind.config";
+import { motion } from "framer-motion";
 
 type Props = {
 	image: string;
@@ -22,7 +21,7 @@ const SectionBlock = (props: Props) => {
 	const { image, title, text, caption, chip1, chip2, chip3, order } = props;
 
 	return (
-		<div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-10 p-20">
+		<div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-10 p-20 text-white">
 			{!order && (
 				<div className="relative w-360 h-360 lg:w-560 lg:h-560">
 					<Image
