@@ -11,14 +11,29 @@ module.exports = {
 				branden: "Branden",
 			},
 			backgroundImage: {
-				"recent-one": "url('/giworks/equity-hero.webp')",
-				"recent-two": "url('/giworks/travel-hero.webp')",
-				"recent-three": "url('/giworks/wallet-hero.webp')",
-				"recent-four": "url('/giworks/smarthome-hero.webp')",
-				"recent-five": "url('/giworks/teachy-hero.webp')",
-				"recent-six": "url('/giworks/workout-hero.webp')",
-				"recent-seven": "url('/giworks/grocery-hero.webp')",
-				"recent-eigth": "url('/giworks/medical-hero.webp')",
+				"recent-one":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846654/equity-hero_zwjxwr.webp')",
+				travel:
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846674/travel-hero_qvqfsq.webp')",
+				"recent-three":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846658/wallet-hero_yq17yz.webp')",
+				"recent-four":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846665/smarthome-hero_yuqtzs.webp')",
+				"recent-five":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846654/workout-hero_ejczuw.webp')",
+				"recent-six":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846673/teachy-hero_fas9sm.webp')",
+				"recent-seven":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846658/grocery-hero_yqesa1.webp')",
+				"recent-eigth":
+					"url('https://res.cloudinary.com/dlzukac2w/image/upload/v1693846666/medical-hero_aoe0yp.webp')",
+				"platform-one": "url('/giworks/medical-hero.webp')",
+				"platform-two": "url('/giworks/medical-hero.webp')",
+				"platform-three": "url('/giworks/medical-hero.webp')",
+				"p-ios": "url('/gitech/p-ios.png')",
+				"p-android": "url('/gitech/p-android.png')",
+				"p-web": "url('/gitech/p-web.png')",
+				"p-tv": "url('/gitech/p-tv.png')",
 			},
 			fontSize: {
 				heading1: "77px",

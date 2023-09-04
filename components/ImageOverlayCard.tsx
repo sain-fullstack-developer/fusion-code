@@ -6,12 +6,14 @@ type Props = {
 	titleArrow?: Boolean;
 	title: string;
 	text?: string;
+	image: string;
 };
 
 const ImageOverlayCard = (props: Props) => {
-	const { onlyTitle, titleArrow, title, text } = props;
+	const { onlyTitle, titleArrow, title, text, image } = props;
 	return (
-		<div className="bg-hero-pattern bg-contain h-[423px] w-full grid place-items-center relative">
+		<div
+			className={`bg-recent-one bg-contain bg-no-repeat h-[423px] w-full grid place-items-center relative`}>
 			<div className="bg-[rgba(0,0,0,0.4)] absolute w-full h-full top-0 left-0 z-0"></div>
 			<div className="z-10">
 				{!onlyTitle && !titleArrow && (
@@ -19,10 +21,8 @@ const ImageOverlayCard = (props: Props) => {
 						<TitleContent
 							title={title}
 							text={text ? text : ""}
-							headingFontSize="text-5xl"
-							headingColor="text-white"
-							textFontSize="text-base"
-							textColor="text-white/80"
+							headingClass="text-5xl text-white"
+							textClass="text-white/80 text-base"
 						/>
 						<div className="text-2xl font-bold text-[rgb(255,83,0)] mt-10 text-center">
 							&rarr;

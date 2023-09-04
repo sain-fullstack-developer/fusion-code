@@ -146,7 +146,8 @@ export const sectionData = [
 
 export const recentWorks = [
 	{
-		image: "recent-one",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846654/equity-hero_zwjxwr.webp",
 		title: "Equity Bank",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -154,7 +155,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-two",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846674/travel-hero_qvqfsq.webp",
 		title: "Travel Ecosystem",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -162,7 +164,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-three",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846658/wallet-hero_yq17yz.webp",
 		title: "e-Wallet",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -170,7 +173,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-four",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846665/smarthome-hero_yuqtzs.webp",
 		title: "Connect Home",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -178,7 +182,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-five",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846673/teachy-hero_fas9sm.webp",
 		title: "University Management",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -186,7 +191,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-six",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846654/workout-hero_ejczuw.webp",
 		title: "Workout Book",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -194,7 +200,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-seven",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846658/grocery-hero_yqesa1.webp",
 		title: "Grocery Store",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -202,7 +209,8 @@ export const recentWorks = [
 		chip3: "Microservice",
 	},
 	{
-		image: "recent-eigth",
+		image:
+			"https://res.cloudinary.com/dlzukac2w/image/upload/v1693846666/medical-hero_aoe0yp.webp",
 		title: "Cyber Medic",
 		caption: "Bank accounts, Biller management, Loans, Investments",
 		chip1: "BFS",
@@ -222,4 +230,76 @@ export const nicheData = [
 	{ name: "Dating" },
 	{ name: "On-demand Delivery" },
 	{ name: "Taxi Booking" },
+];
+
+export const platformsData = [
+	{
+		url: "p-ios",
+		title: "iOS",
+	},
+	{
+		url: "p-android",
+		title: "Android",
+	},
+	{
+		url: "p-web",
+		title: "Web",
+	},
+	{
+		url: "p-tv",
+		title: "TV",
+	},
+];
+
+export const techIndexImages = [
+	{ url: "/gktech/logo1.png" },
+	{ url: "/gktech/logo2.png" },
+	{ url: "/gktech/logo3.png" },
+	{ url: "/gktech/logo4.png" },
+	{ url: "/gktech/logo5.png" },
+	{ url: "/gktech/logo6.png" },
+	{ url: "/gktech/logo7.png" },
+	{ url: "/gktech/logo8.png" },
+	{ url: "/gktech/logo9.png" },
+	{ url: "/gktech/log10.png" },
+	{ url: "/gktech/logo11.png" },
+	{ url: "/gktech/logo12.png" },
+	{ url: "/gktech/logo13.png" },
+	{ url: "/gktech/logo14.png" },
+	{ url: "/gktech/logo15.png" },
+	{ url: "/gktech/logo16.png" },
+	{ url: "/gktech/logo17.png" },
+	{ url: "/gktech/logo18.png" },
+	{ url: "/gktech/logo19.png" },
+	{ url: "/gktech/logo20.png" },
+	{ url: "/gktech/logo21.png" },
+	{ url: "/gktech/logo22.png" },
+	{ url: "/gktech/logo23.png" },
+	{ url: "/gktech/logo24.png" },
+];
+
+export const socialIcons = [
+	{ logo: "/gktech/icon-facebook.svg" },
+	{ logo: "/gktech/icon-twitter.svg" },
+	{ logo: "/gktech/icon-github.svg" },
+	{ logo: "/gktech/icon-dribble.svg" },
+	{ logo: "/gktech/icon-behance.svg" },
+	{ logo: "/gktech/icon-telegram.svg" },
+];
+
+export const qualityIcons = [
+	{ logo: "/gktech/icon-rel.svg" },
+	{ logo: "/gktech/icon-eff.svg" },
+	{ logo: "/gktech/icon-secure.svg" },
+	{ logo: "/gktech/icon-main.svg" },
+];
+export const productsData = [
+	{ url: "/gktech/payments.png", title: "Payments" },
+	{ url: "/gktech/bg-audio.png", title: "Audio & Video" },
+	{ url: "/gktech/photo.png", title: "Photo" },
+	{ url: "/gktech/bg-backend.png", title: "Backend & Cloud" },
+	{ url: "/gktech/bg-machine-learning.png", title: "Machine Learning" },
+	{ url: "/gktech/bg-smartwatch.png", title: "Wearables" },
+	{ url: "/gktech/bg-realtime.png", title: "Real Time" },
+	{ url: "/gktech/bg-graphics.png", title: "Advanced graphics" },
 ];
