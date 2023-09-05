@@ -35,11 +35,6 @@ module.exports = {
 				"p-web": "url('/gitech/p-web.png')",
 				"p-tv": "url('/gitech/p-tv.png')",
 			},
-			fontSize: {
-				heading1: "77px",
-				subHeading: "66px",
-				subText: "20px",
-			},
 			screens: {
 				sm: "640px",
 

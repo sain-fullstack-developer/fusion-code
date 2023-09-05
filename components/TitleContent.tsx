@@ -31,10 +31,11 @@ const TitleContent = (props: Props) => {
 		<motion.div
 			initial={initial}
 			whileInView={whileInView}
-			transition={transition}>
+			transition={transition}
+			className="p-2">
 			{main && (
 				<h1
-					className={`text-4xl pb-2 sm:pb-10 sm:text-heading1 font-medium capitalize ${
+					className={`${headingClass} pb-2 sm:pb-10 font-medium capitalize ${
 						dark ? "text-white" : "text-[rgb(22,24,28)]"
 					} text-center`}>
 					{title}

@@ -14,12 +14,12 @@ const Header = (props: Props) => {
 	const path = usePathname();
 
 	useEffect(() => {
-		if (path === "/works") {
+		if (path === "/works" || path === "/services") {
 			setLightMode(true);
 		} else {
 			setLightMode(false);
 		}
-	}, [lightMode]);
+	}, [lightMode, path]);
 
 	const navList = [
 		{ nav: "Home", path: "/" },
@@ -42,8 +42,10 @@ const Header = (props: Props) => {
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.6 }}
 			id="header"
-			className={`${headerBg} grid gap-8 grid-cols-2 lg:gap-0 lg:flex lg:justify-between px-12 py-6 fixed top-0 z-20 w-full`}>
-			<div>
+			className={`${headerBg} ${
+				lightMode ? "bg-gray-100" : "bg-primary"
+			} sm:bg-transparent  flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-6 sm:fixed top-0 z-20 w-full`}>
+			<div className="self-center sm:self-auto">
 				<Image
 					src={lightMode ? "/geeks-logo.svg" : "/geeks-logo-white.svg"}
 					height={280}
@@ -55,41 +57,75 @@ const Header = (props: Props) => {
 				onClick={() => {
 					setMenuOn(!menuOn);
 				}}
-				className="lg:hidden m-auto">
-				<button title="menu-button" type="button" className="relative group">
-					<div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-						<div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-							<div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:rotate-[42deg]"></div>
-							<div className="bg-white h-[2px] w-1/2 rounded transform transition-all duration-300 group-focus:-translate-x-10"></div>
-							<div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg]"></div>
+				className="sm:hidden z-50">
+				<div>
+					<button title="button" className="relative group">
+						<div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[40px] transform transition-all bg-black duration-200 shadow-md">
+							<div className="flex flex-col justify-between w-[24px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+								<div
+									className={`bg-white h-[3px] w-7 transform transition-all duration-300 origin-left ${
+										menuOn && "group-focus:translate-x-10"
+									} `}></div>
+								<div
+									className={`bg-white h-[3px] w-7 rounded transform transition-all duration-300 ${
+										menuOn && "group-focus:translate-x-10"
+									} delay-75`}></div>
+								<div
+									className={`bg-white h-[3px] w-7 transform transition-all duration-300 origin-left ${
+										menuOn && "group-focus:translate-x-10"
+									} delay-150`}></div>
+
+								<div
+									className={`absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 ${
+										menuOn && "group-focus:translate-x-0 group-focus:w-12"
+									} flex w-0`}>
+									<div
+										className={`absolute bg-white h-[3px] w-5 transform transition-all duration-500 rotate-0 delay-300 ${
+											menuOn && "group-focus:rotate-45"
+										}`}></div>
+									<div
+										className={`absolute bg-white h-[3px] w-5 transform transition-all duration-500 -rotate-0 delay-300 ${
+											menuOn && "group-focus:-rotate-45"
+										}`}></div>
+								</div>
+							</div>
 						</div>
-					</div>
-				</button>
+					</button>
+				</div>
 			</div>
-			<nav
+			<motion.nav
 				id="navList"
-				className={`${menuOn ? "block" : "hidden"} lg:block z-10`}>
+				className={`${
+					menuOn
+						? "grid place-items-center absolute left-0 bg-black/90 -top-2 w-full h-[102vh]"
+						: "hidden"
+				} sm:block z-40 mt-1 m-auto lg:m-0`}>
 				<ul
 					className={`${
-						lightMode ? "text-black" : "text-white"
-					}  gap-4 lg:flex lg:gap-8 uppercase`}>
+						lightMode
+							? "text-black"
+							: menuOn
+							? "text-center grid"
+							: "text-white"
+					}  gap-4 sm:flex sm:gap-2 lg:gap-8 uppercase`}>
 					{navList.map((list, index) => (
 						<Link key={index} href={list.path}>
 							<motion.li
-								layoutId="underline"
-								className="relative hover:underline-offset-4 hover:underline hover:decoration-[rgb(255,83,0)]">
-								{list.path === path && (
-									<motion.span
-										layoutId="underline"
-										className="absolute left-0 top-full block h-[1px] w-full bg-[rgb(255,83,0)]"
-									/>
-								)}
+								initial={{ x: index % 2 === 0 ? 200 : -200, opacity: 0 }}
+								whileInView={{ x: 0, opacity: 1 }}
+								transition={{ duration: 0.6 }}
+								className={`${
+									list.path === path &&
+									"underline underline-offset-4 decoration-[rgb(255,83,0)]"
+								} ${
+									menuOn && "text-white pb-4 text-lg text-center"
+								} relative text-lg sm:text-sm md:text-base tracking-wider hover:underline-offset-4 hover:underline hover:decoration-[rgb(255,83,0)]`}>
 								{list.nav}
 							</motion.li>
 						</Link>
 					))}
 				</ul>
-			</nav>
+			</motion.nav>
 		</motion.header>
 	);
 };

@@ -14,16 +14,8 @@ import TitleContent from "@/components/TitleContent";
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
-	const [scrollDisplayTop, setScrollDisplayTop] = useState(true);
-	const [scrollDisplayBottom, setScrollDisplayBottom] = useState(false);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
-	const sectionRef = useRef([]);
-
-	// const { scrollYProgress } = useScroll({
-	// 	target: targetRef,
-	// 	offset: ["start end", "end end"],
-	// });
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -40,68 +32,6 @@ const Home = () => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 3000);
-	}, []);
-
-	const wrapperSection = document.getElementById("wrapper-section");
-
-	const observer = new IntersectionObserver(
-		(entries) => {
-			if (entries) {
-				if (entries[0]?.isIntersecting) {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-primary");
-						wrapperSection.classList.add("bg-secondary");
-					}
-				} else {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-secondary");
-					}
-				}
-				if (entries[1]?.isIntersecting) {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-secondary");
-						wrapperSection.classList.add("bg-fifth");
-					}
-				} else {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-fifth");
-						wrapperSection.classList.add("bg-primary");
-					}
-				}
-				if (entries[2]?.isIntersecting) {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-fifth");
-						wrapperSection.classList.add("bg-primary");
-					}
-				} else {
-					if (wrapperSection) {
-					}
-				}
-			}
-		},
-		{
-			threshold: 0.5,
-		}
-	);
-
-	useEffect(() => {
-		const element1 =
-			typeof document !== "undefined" && document.getElementById("section-0");
-		const element2 =
-			typeof document !== "undefined" && document.getElementById("section-1");
-		const element3 =
-			typeof document !== "undefined" && document.getElementById("section-2");
-
-		const elements = [element1, element2, element3];
-
-		if (elements) {
-			elements.forEach((element) => {
-				console.log(elements);
-				if (element) {
-					observer.observe(element);
-				}
-			});
-		}
 	}, []);
 
 	return (
@@ -139,31 +69,49 @@ const Home = () => {
 							</div>
 						</section>
 
-						<motion.section
-							id="wrapper-section"
-							className={`z-10 relative bg-primary pb-40`}>
-							{sectionData.map((data, index) => {
-								return (
-									<motion.section key={index} id={`section-${index}`}>
-										<SectionBlock
-											image={data.image}
-											title={data.title}
-											text={data.text}
-											caption={data.caption}
-											chip1={data.chip1}
-											chip2={data.chip2}
-											chip3={data.chip3}
-											order={index === 0 ? data.order : false}
-										/>
-									</motion.section>
-								);
-							})}
+						<motion.div className={`z-10 relative bg-primary pb-40`}>
+							<motion.section>
+								<SectionBlock
+									image={sectionData[0].image}
+									title={sectionData[0].title}
+									text={sectionData[0].text}
+									caption={sectionData[0].caption}
+									chip1={sectionData[0].chip1}
+									chip2={sectionData[0].chip2}
+									chip3={sectionData[0].chip3}
+									order={true}
+								/>
+							</motion.section>
+							<motion.section>
+								<SectionBlock
+									image={sectionData[1].image}
+									title={sectionData[1].title}
+									text={sectionData[1].text}
+									caption={sectionData[1].caption}
+									chip1={sectionData[1].chip1}
+									chip2={sectionData[1].chip2}
+									chip3={sectionData[1].chip3}
+									order={true}
+								/>
+							</motion.section>
+							<motion.section>
+								<SectionBlock
+									image={sectionData[2].image}
+									title={sectionData[2].title}
+									text={sectionData[2].text}
+									caption={sectionData[2].caption}
+									chip1={sectionData[2].chip1}
+									chip2={sectionData[2].chip2}
+									chip3={sectionData[2].chip3}
+									order={true}
+								/>
+							</motion.section>
 
 							<section className="py-20 grid place-items-center bg-primary">
-								<div className="text-center w-1/2">
+								<div className="text-center sm:w-1/2">
 									<TitleContent
-										headingClass="text-white text-3xl sm:text-5xl"
-										textClass="text-white/80 text-lg"
+										headingClass="text-white text-4xl sm:text-6xl"
+										textClass="text-white/80 text-xl"
 										title="Check out more works by Geeks Invention"
 										text="Our case studies describe design and development solutions
 										implemented at our Geeks Invention projects. The stories are
@@ -184,8 +132,8 @@ const Home = () => {
 
 							<section className="py-20 text-center mb-12 bg-primary">
 								<TitleContent
-									headingClass="text-white text-3xl sm:text-5xl"
-									textClass="text-white/60 text-lg"
+									headingClass="text-white text-3xl sm:text-6xl"
+									textClass="text-white/60 text-text"
 									title="Recent clients"
 									text="We worked with the Fortune 500 companies in the USA, Africa,
 										UK, Middle East World's 4th Strongest Banking Brand,
@@ -214,7 +162,7 @@ const Home = () => {
 
 							<section className="min-h-screen text-center p-6 sm:p-0 bg-primary">
 								<TitleContent
-									headingClass="text-white text-4xl sm:text-7xl"
+									headingClass="text-white text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"
 									title="Software for modern platforms"
 									text="We develop applications for mobile, web, wearables, and TV."
@@ -283,7 +231,7 @@ const Home = () => {
 									See our services
 								</Button>
 							</section>
-						</motion.section>
+						</motion.div>
 
 						<motion.section className="relative mt-[-60vh] h-[140vh] z-0 bg-primary">
 							<div className="mb-[-120vh] h-[320vh] w-full text-white bg-primary">

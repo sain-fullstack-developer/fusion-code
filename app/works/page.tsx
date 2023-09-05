@@ -13,13 +13,13 @@ type Props = {};
 const Works = (props: Props) => {
 	return (
 		<>
-			{/* <Header /> */}
+			<Header />
 			<main>
 				<section className="pb-40 z-10" id="section-wrapper-works">
-					<section className="">
-						<div className="bg-gray-100 p-10 sm:p-40 pb-4">
+					<div className="">
+						<div className="bg-gray-100 px-10 py-20 sm:p-40 pb-4">
 							<TitleContent
-								headingClass="text-[#23252c] text-xl sm:text-5xl"
+								headingClass="text-[#23252c] text-4xl sm:text-5xl lg:text-7xl"
 								textClass="text-black/60 text-lg mb-10"
 								title="Recent projects"
 								text="Our enterprise clients include IBM, Audi Motors, Equity Bank. We also work with statups and small and medium-sized businesses."
@@ -46,8 +46,8 @@ const Works = (props: Props) => {
 								</div>
 							);
 						})}
-					</section>
-					<section className="py-20">
+					</div>
+					<div className="py-20">
 						<TitleContent
 							headingClass="text-black/80 text-3xl sm:text-7xl"
 							textClass="text-black/60 text-lg"
@@ -57,8 +57,8 @@ const Works = (props: Props) => {
 							whileInView={{ y: 0, opacity: 1 }}
 							transition={{ type: "spring", stiffness: 30 }}
 						/>
-					</section>
-					<section className="grid place-items-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6 sm:gap-x-6 sm:gap-y-12">
+					</div>
+					<div className="grid place-items-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6 sm:gap-x-6 sm:gap-y-12">
 						{nicheData.map((niche, index) => {
 							return (
 								<Button
@@ -70,12 +70,12 @@ const Works = (props: Props) => {
 								</Button>
 							);
 						})}
-					</section>
+					</div>
 				</section>
 				<section className="relative mt-[-5vh] h-[50vh] -z-10 bg-primary">
 					<div className="mb-[-120vh] h-[40vh] w-full text-white bg-primary">
 						<div className="grid place-items-center sticky top-[80vh]">
-							{/* <Footer /> */}
+							<Footer />
 						</div>
 					</div>
 				</section>
