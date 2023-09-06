@@ -8,7 +8,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				branden: "Branden",
+				roc: ["var(--font-rocgrotesk)"],
 			},
 			backgroundImage: {
 				"recent-one":
@@ -34,28 +34,25 @@ module.exports = {
 				"p-android": "url('/gitech/p-android.png')",
 				"p-web": "url('/gitech/p-web.png')",
 				"p-tv": "url('/gitech/p-tv.png')",
+				radial: "radial-gradient(circle closest-side,#080820 50%,#010104)",
+				radialTwo: "linear-gradient(45deg,#00f,#9f9fff)",
+				linearText: "linear-gradient(45deg,#3b00ff,#c700ff)",
+				btnBg: "linear-gradient(45deg,#0a02a6,#300279 81%,#33036c)",
+				videoBg:
+					"https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-poster-00001.jpg",
 			},
-			screens: {
-				sm: "640px",
-
-				md: "768px",
-
-				lg: "1024px",
-
-				xl: "1280px",
-
-				xxl: "1536px",
-			},
-
 			height: {
 				pixel: "1px",
 			},
 			borderWidth: {
 				pixel: "1px",
 			},
+			borderColor: {
+				borderBlue: "rgb(22,2,152)",
+			},
 			backgroundColor: {
-				primary: "rgb(22,24,28)",
-				secondary: "rgb(63,44,170)",
+				primary: "rgba(0,0,0,1)",
+				secondary: "rgba(5,5,46,.25)",
 				third: "rgb(1,181,172)",
 				forth: "rgb(255,83,0)",
 				fifth: "#01b5ac",
@@ -70,6 +67,9 @@ module.exports = {
 			},
 			zIndex: {
 				negetive: -1,
+			},
+			boxShadow: {
+				custom: "6px 6px 32px rgba(0,0,255,.6)",
 			},
 		},
 	},

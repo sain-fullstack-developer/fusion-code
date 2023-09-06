@@ -23,12 +23,9 @@ const Footer = (props: Props) => {
 			className="bg-primary">
 			<div className="grid place-items-center lg:flex lg:justify-evenly gap-6 px-4 md:px-12 py-6">
 				<div>
-					<Image
-						src="/geeks-logo-white.svg"
-						height={280}
-						width={280}
-						alt="logo"
-					/>
+					<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold">
+						FC
+					</div>
 					<p className="text-white text-center sm:text-left">
 						447 Broadway, 2nd Floor Suite #772,
 						<br /> New York 10013, United States
@@ -45,7 +42,7 @@ const Footer = (props: Props) => {
 				<div className="m-auto sm:mr-auto">
 					<Button
 						type="button"
-						className="border-pixel border-white bg-none rounded-full px-4 py-2 text-white hover:bg-white hover:text-black"
+						className="border-pixel border-white bg-none rounded-full px-4 py-2 text-white hover:bg-btnBg"
 						noArrow={true}>
 						Stay tuned for our updates
 					</Button>

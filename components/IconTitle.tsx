@@ -44,7 +44,7 @@ const IconTitle = (props: Props) => {
 			<h2 className={`${text ? "text-white" : "text-white"} text-2xl`}>
 				{title}
 			</h2>
-			{underline && <hr className="h-[3px] bg-forth w-[200px] m-auto mb-10" />}
+			{underline && <hr className="h-[3px] bg-btnBg w-[200px] m-auto mb-10" />}
 			{text && (
 				<p className="text-lg text-center max-w-sm m-auto text-white/60 mt-6">
 					{text}

@@ -35,18 +35,18 @@ const TitleContent = (props: Props) => {
 			className="p-2">
 			{main && (
 				<h1
-					className={`${headingClass} pb-2 sm:pb-10 font-medium capitalize ${
+					className={`${headingClass} pb-2 sm:pb-10 font-medium capitalize font-roc ${
 						dark ? "text-white" : "text-[rgb(22,24,28)]"
 					} text-center`}>
 					{title}
 				</h1>
 			)}
 			{underline && (
-				<hr className="h-[3px] bg-forth w-[100px] sm:w-[200px] m-auto mb-10" />
+				<hr className="h-[3px] bg-btnBg w-[100px] sm:w-[200px] m-auto mb-10" />
 			)}
 			{!main && (
 				<h3
-					className={`${headingClass} font-medium tracking-wider text-center mb-10`}>
+					className={`${headingClass} font-medium tracking-wider text-center mb-10 font-roc`}>
 					{title}
 				</h3>
 			)}

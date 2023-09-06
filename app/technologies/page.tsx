@@ -1,8 +1,8 @@
 "use client";
 import Header from "@/components/Header";
-import ImageOverlayCard from "@/components/ImageOverlayCard";
+// import ImageOverlayCard from "@/components/ImageOverlayCard";
 import TitleContent from "@/components/TitleContent";
-import { platformData, platformsData } from "@/data";
+// import { platformData, platformsData } from "@/data";
 import React from "react";
 
 type Props = {};
@@ -27,7 +27,7 @@ const Technologies = (props: Props) => {
 							dark={true}
 						/>
 					</section>
-					<section className="p-4 sm:p-20">
+					{/* <section className="p-4 sm:p-20">
 						<TitleContent
 							headingClass="text-3xl text-white sm:text-6xl"
 							textClass="text-white/60 text-lg pb-20"
@@ -51,7 +51,7 @@ const Technologies = (props: Props) => {
 								);
 							})}
 						</div>
-					</section>
+					</section> */}
 				</section>
 			</main>
 		</>

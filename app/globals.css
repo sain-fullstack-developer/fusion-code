@@ -5,3 +5,31 @@
 body {
 	scroll-behavior: smooth;
 }
+
+.scroll-animate {
+	display: flex;
+	flex-wrap: nowrap;
+	animation: scroll 20s linear infinite;
+}
+
+.gradients {
+	background: linear-gradient(90deg, #3b00ff, #c700ff 50%, #ff4747);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+@media (max-width: 600px) {
+	.scroll-animate {
+		animation: scroll 10s linear infinite;
+	}
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
