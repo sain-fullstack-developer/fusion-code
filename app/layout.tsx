@@ -6,7 +6,7 @@ import localFont from "@next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
 	title: "Fusion Code",
 	description: "Assignment Animated Landing page",
 };
