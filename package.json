@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@next/font": "^13.4.19",
 		"@vercel/postgres": "^0.4.0",
 		"autoprefixer": "10.4.14",
 		"axios": "^1.4.0",

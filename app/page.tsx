@@ -1,6 +1,5 @@
 "use client";
 import Button from "@/components/Button";
-import ClientsCard from "@/components/ClientsCard";
 import Footer from "@/components/Footer.";
 import Header from "@/components/Header";
 import IconTitle from "@/components/IconTitle";
@@ -8,22 +7,14 @@ import SectionBlock from "@/components/SectionBlock";
 import { cardData, platformData, sectionData, teamsData } from "@/data";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import InitialPage from "@/components/Loading";
 import TitleContent from "@/components/TitleContent";
+import Image from "next/image";
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
-	const [scrollDisplayTop, setScrollDisplayTop] = useState(true);
-	const [scrollDisplayBottom, setScrollDisplayBottom] = useState(false);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
-	const sectionRef = useRef([]);
-
-	// const { scrollYProgress } = useScroll({
-	// 	target: targetRef,
-	// 	offset: ["start end", "end end"],
-	// });
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -42,131 +33,108 @@ const Home = () => {
 		}, 3000);
 	}, []);
 
-	const wrapperSection = document.getElementById("wrapper-section");
-
-	const observer = new IntersectionObserver(
-		(entries) => {
-			if (entries) {
-				if (entries[0]?.isIntersecting) {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-primary");
-						wrapperSection.classList.add("bg-secondary");
-					}
-				} else {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-secondary");
-					}
-				}
-				if (entries[1]?.isIntersecting) {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-secondary");
-						wrapperSection.classList.add("bg-fifth");
-					}
-				} else {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-fifth");
-						wrapperSection.classList.add("bg-primary");
-					}
-				}
-				if (entries[2]?.isIntersecting) {
-					if (wrapperSection) {
-						wrapperSection.classList.remove("bg-fifth");
-						wrapperSection.classList.add("bg-primary");
-					}
-				} else {
-					if (wrapperSection) {
-					}
-				}
-			}
-		},
-		{
-			threshold: 0.5,
-		}
-	);
-
-	useEffect(() => {
-		const element1 =
-			typeof document !== "undefined" && document.getElementById("section-0");
-		const element2 =
-			typeof document !== "undefined" && document.getElementById("section-1");
-		const element3 =
-			typeof document !== "undefined" && document.getElementById("section-2");
-
-		const elements = [element1, element2, element3];
-
-		if (elements) {
-			elements.forEach((element) => {
-				console.log(elements);
-				if (element) {
-					observer.observe(element);
-				}
-			});
-		}
-	}, []);
-
 	return (
 		<>
 			{isLoading && <InitialPage />}
 			{!isLoading && (
 				<>
 					<Header />
-					<motion.main className="bg-primary -z-10">
+					<motion.main
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 2 }}
+						className="bg-primary -z-10">
 						<section
 							ref={targetRef}
 							className="relative mt-[-30vh] h-[140vh] z-0">
-							<div
-								ref={extendedRef}
-								className="mb-[-120vh] h-[420vh] w-full text-white">
-								<motion.div className="grid place-items-center sticky top-[40vh]">
-									<Image
-										className="absolute opacity-10"
-										src="/geeks.png"
-										height={480}
-										width={480}
-										alt="Geeks Icon"
-									/>
+							<div ref={extendedRef} className="mb-[-120vh] h-[420vh] w-full">
+								<motion.div className="grid place-items-center sm:h-screen sticky top-[40vh] sm:top-[6vh]">
+									<div
+										data-poster-url="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-poster-00001.jpg"
+										data-video-urls="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.mp4,https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.webm"
+										data-autoplay="true"
+										data-loop="true"
+										data-wf-ignore="true"
+										data-beta-bgvideo-upgrade="false"
+										className="z-0 w-full h-full absolute object-cover text-white">
+										<video autoPlay={true}>
+											<source
+												src="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.mp4"
+												data-wf-ignore="true"></source>
+											<source
+												src="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.webm"
+												data-wf-ignore="true"></source>
+										</video>
+									</div>
 									<motion.div
 										ref={targetRef}
-										className="p-6 sm:p-0 text-center">
-										<h1 className="text-5xl sm:text-7xl mb-10">
-											EMBRACE THE FUTURE
-										</h1>
-										<p className="text-2xl sm:text-4xl text-center">
-											Welcome to the Age of Action
-										</p>
+										className="p-6 sm:p-0 text-white text-center z-20">
+										<motion.h1 className="font-roc text-5xl md:text-7xl lg:text-8xl mb-10">
+											<motion.div
+												initial={{ opacity: 0, y: -400 }}
+												animate={{ opacity: 1, y: 0 }}
+												transition={{ duration: 1, delay: 0.4 }}>
+												Fusing Innovation
+											</motion.div>
+											<motion.div
+												initial={{ opacity: 0, y: 400 }}
+												animate={{ opacity: 1, y: 0 }}
+												transition={{ duration: 1, delay: 0.4 }}>
+												with Excellence
+											</motion.div>
+										</motion.h1>
 									</motion.div>
+									<div className="bg-black/30 z-10 w-full h-full top-0 left-0 absolute"></div>
 								</motion.div>
 							</div>
 						</section>
 
-						<motion.section
-							id="wrapper-section"
-							className={`z-10 relative bg-primary pb-40`}>
-							{sectionData.map((data, index) => {
-								return (
-									<motion.section key={index} id={`section-${index}`}>
-										<SectionBlock
-											image={data.image}
-											title={data.title}
-											text={data.text}
-											caption={data.caption}
-											chip1={data.chip1}
-											chip2={data.chip2}
-											chip3={data.chip3}
-											order={index === 0 ? data.order : false}
-										/>
-									</motion.section>
-								);
-							})}
+						<motion.div className={`z-30 relative bg-primary pb-40`}>
+							<motion.section>
+								<SectionBlock
+									image={sectionData[0].image}
+									title={sectionData[0].title}
+									text={sectionData[0].text}
+									caption={sectionData[0].caption}
+									chip1={sectionData[0].chip1}
+									chip2={sectionData[0].chip2}
+									chip3={sectionData[0].chip3}
+									order={true}
+								/>
+							</motion.section>
+							<motion.section>
+								<SectionBlock
+									image={sectionData[1].image}
+									title={sectionData[1].title}
+									text={sectionData[1].text}
+									caption={sectionData[1].caption}
+									chip1={sectionData[1].chip1}
+									chip2={sectionData[1].chip2}
+									chip3={sectionData[1].chip3}
+									order={true}
+								/>
+							</motion.section>
+							<motion.section>
+								<SectionBlock
+									image={sectionData[2].image}
+									title={sectionData[2].title}
+									text={sectionData[2].text}
+									caption={sectionData[2].caption}
+									chip1={sectionData[2].chip1}
+									chip2={sectionData[2].chip2}
+									chip3={sectionData[2].chip3}
+									order={true}
+								/>
+							</motion.section>
 
 							<section className="py-20 grid place-items-center bg-primary">
-								<div className="text-center w-1/2">
+								<div className="text-center sm:w-1/2">
 									<TitleContent
-										headingClass="text-white text-3xl sm:text-5xl"
-										textClass="text-white/80 text-lg"
-										title="Check out more works by Geeks Invention"
+										headingClass="text-white text-4xl sm:text-6xl"
+										textClass="text-white/80 text-xl"
+										title="Check out more works by Fusion Code"
 										text="Our case studies describe design and development solutions
-										implemented at our Geeks Invention projects. The stories are
+										implemented at our Fusion Code projects. The stories are
 										a valuable resource for those looking to develop their own
 										mobile apps."
 										initial={{ y: 100, opacity: 0 }}
@@ -176,16 +144,16 @@ const Home = () => {
 
 									<Button
 										type="button"
-										className="border-pixel text-lg mt-20 hover:bg-[rgb(255,83,0)] hover:text-white border-[rgb(255,83,0)] bg-none text-[rgb(255,83,0)] p-4 rounded-full">
+										className="border-pixel text-lg mt-20 hover:bg-btnBg border-borderBlue text-white bg-none p-4 rounded-full">
 										See all case studies
 									</Button>
 								</div>
 							</section>
 
-							<section className="py-20 text-center mb-12 bg-primary">
+							<section className="pt-20 pb-10 text-center mb-12 bg-primary">
 								<TitleContent
-									headingClass="text-white text-3xl sm:text-5xl"
-									textClass="text-white/60 text-lg"
+									headingClass="text-white text-3xl sm:text-6xl"
+									textClass="text-white/60 text-text"
 									title="Recent clients"
 									text="We worked with the Fortune 500 companies in the USA, Africa,
 										UK, Middle East World's 4th Strongest Banking Brand,
@@ -194,27 +162,27 @@ const Home = () => {
 									whileInView={{ y: 0, opacity: 1 }}
 									transition={{ type: "spring", stiffness: 30 }}
 								/>
-								<motion.div
-									initial={{ y: 200, opacity: 0 }}
-									whileInView={{ y: 0, opacity: 1 }}
-									transition={{ type: "spring", stiffness: 30 }}
-									className="grid gap-6 p-16 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mt-20">
-									{cardData.map((card, index) => {
-										return (
-											<ClientsCard
-												key={index}
-												logo={card.logo}
-												title={card.title}
-												text={card.text}
-											/>
-										);
-									})}
-								</motion.div>
+								<div className="overflow-hidden w-full pt-20">
+									<motion.div className="scroll-animate">
+										{cardData.map((card, index) => {
+											return (
+												<div className="flex-shrink-0 mr-20" key={index}>
+													<Image
+														src={card.logo}
+														width={180}
+														height={180}
+														alt={`client-${index}`}
+													/>
+												</div>
+											);
+										})}
+									</motion.div>
+								</div>
 							</section>
 
 							<section className="min-h-screen text-center p-6 sm:p-0 bg-primary">
 								<TitleContent
-									headingClass="text-white text-4xl sm:text-7xl"
+									headingClass="text-white text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"
 									title="Software for modern platforms"
 									text="We develop applications for mobile, web, wearables, and TV."
@@ -242,7 +210,7 @@ const Home = () => {
 									})}
 								</div>
 								<Button
-									className="border-pixel rounded-full py-4 px-8 border-[rgb(255,83,0)] text-[rgb(255,83,0)] hover:bg-[rgb(255,83,0)] hover:text-white"
+									className="border-pixel rounded-full py-4 px-8 border-borderBlue text-white hover:bg-btnBg hover:text-white"
 									type="button">
 									See our tech stack
 								</Button>
@@ -278,12 +246,12 @@ const Home = () => {
 									})}
 								</div>
 								<Button
-									className="border-pixel rounded-full py-4 px-8 border-[rgb(255,83,0)] text-[rgb(255,83,0)] hover:bg-[rgb(255,83,0)] hover:text-white"
+									className="border-pixel rounded-full py-4 px-8 border-borderBlue text-white hover:bg-btnBg hover:text-white"
 									type="button">
 									See our services
 								</Button>
 							</section>
-						</motion.section>
+						</motion.div>
 
 						<motion.section className="relative mt-[-60vh] h-[140vh] z-0 bg-primary">
 							<div className="mb-[-120vh] h-[320vh] w-full text-white bg-primary">
@@ -299,7 +267,7 @@ const Home = () => {
 										transition={{ type: "spring", stiffness: 30 }}
 									/>
 									<Button
-										className="rounded-full text-white py-4 px-8 hover:bg-white bg-[rgb(255,83,0)] hover:text-[rgb(255,83,0)] mb-20"
+										className="rounded-full text-white py-4 px-8 hover:bg-white bg-btnBg mb-20"
 										type="button">
 										Drop us a message
 									</Button>

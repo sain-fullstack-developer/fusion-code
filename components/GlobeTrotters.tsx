@@ -6,7 +6,7 @@ type Props = {};
 const GlobeTrotters = (props: Props) => {
 	return (
 		<div>
-			<h3 className="text-4xl sm:text-subHeading text-white text-center mb-20">
+			<h3 className="text-4xl sm:text-6xl text-white text-center mb-20">
 				Globetrotters
 			</h3>
 			<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 place-items-center text-center">

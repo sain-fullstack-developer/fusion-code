@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
@@ -14,12 +13,12 @@ const Header = (props: Props) => {
 	const path = usePathname();
 
 	useEffect(() => {
-		if (path === "/works") {
-			setLightMode(true);
+		if (path === "/works" || path === "/services") {
+			setLightMode(false);
 		} else {
 			setLightMode(false);
 		}
-	}, [lightMode]);
+	}, [lightMode, path]);
 
 	const navList = [
 		{ nav: "Home", path: "/" },
@@ -42,54 +41,111 @@ const Header = (props: Props) => {
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.6 }}
 			id="header"
-			className={`${headerBg} grid gap-8 grid-cols-2 lg:gap-0 lg:flex lg:justify-between px-12 py-6 fixed top-0 z-20 w-full`}>
-			<div>
-				<Image
-					src={lightMode ? "/geeks-logo.svg" : "/geeks-logo-white.svg"}
-					height={280}
-					width={280}
-					alt="header-logo"
-				/>
+			className={`${headerBg} ${
+				lightMode ? "bg-gray-100" : "bg-primary"
+			} sm:bg-transparent  flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 z-20 w-full`}>
+			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold">
+				FC
 			</div>
-			<div
-				onClick={() => {
-					setMenuOn(!menuOn);
-				}}
-				className="lg:hidden m-auto">
-				<button title="menu-button" type="button" className="relative group">
-					<div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-						<div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-							<div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:rotate-[42deg]"></div>
-							<div className="bg-white h-[2px] w-1/2 rounded transform transition-all duration-300 group-focus:-translate-x-10"></div>
-							<div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg]"></div>
-						</div>
-					</div>
-				</button>
-			</div>
-			<nav
+
+			<motion.nav
 				id="navList"
-				className={`${menuOn ? "block" : "hidden"} lg:block z-10`}>
+				className={`${
+					menuOn
+						? "grid sm:place-items-center absolute left-5 sm:left-[14%] bg-black w-[90%] sm:w-fit h-full p-6 rounded-lg ring-1 ring-gray-100 top-20"
+						: "hidden"
+				} lg:block z-40 mt-1 m-auto lg:m-0`}>
 				<ul
 					className={`${
-						lightMode ? "text-black" : "text-white"
-					}  gap-4 lg:flex lg:gap-8 uppercase`}>
+						lightMode
+							? "text-black"
+							: menuOn
+							? "text-center grid"
+							: "text-white"
+					}  gap-4 sm:flex sm:gap-4 lg:gap-8 uppercase`}>
 					{navList.map((list, index) => (
 						<Link key={index} href={list.path}>
 							<motion.li
-								layoutId="underline"
-								className="relative hover:underline-offset-4 hover:underline hover:decoration-[rgb(255,83,0)]">
-								{list.path === path && (
-									<motion.span
-										layoutId="underline"
-										className="absolute left-0 top-full block h-[1px] w-full bg-[rgb(255,83,0)]"
-									/>
-								)}
+								initial={{ x: index % 2 === 0 ? 200 : -200, opacity: 0 }}
+								whileInView={{ x: 0, opacity: 1 }}
+								transition={{ duration: 0.6 }}
+								className={`${
+									list.path === path &&
+									"underline underline-offset-4 decoration-[rgb(22,2,152)]"
+								} ${
+									menuOn && "text-white pb-4 text-lg text-center"
+								} relative text-lg sm:text-sm md:text-base tracking-wider hover:underline-offset-4 hover:underline hover:decoration-[rgb(22,2,152)]`}>
 								{list.nav}
 							</motion.li>
 						</Link>
 					))}
+					<li className="block sm:hidden">
+						<div className="relative inline-flex group">
+							<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+							<a
+								href="#"
+								title="Get quote now"
+								className="relative inline-flex items-center justify-center px-6 py-3 text-base text-white transition-all duration-200 bg-btnBg rounded-lg ring-1  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+								role="button">
+								Hire us
+							</a>
+						</div>
+					</li>
 				</ul>
-			</nav>
+			</motion.nav>
+
+			<div className="flex gap-4">
+				<div className="relative hidden sm:inline-flex group">
+					<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+					<a
+						href="#"
+						title="Get quote now"
+						className="relative inline-flex items-center justify-center px-6 py-3 text-base text-white transition-all duration-200 bg-btnBg rounded-lg ring-1  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+						role="button">
+						Hire us
+					</a>
+				</div>
+				<div
+					onClick={() => {
+						setMenuOn(!menuOn);
+					}}
+					className="lg:hidden z-50">
+					<div>
+						<button title="button" className="relative group">
+							<div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[40px] transform transition-all duration-200 shadow-md">
+								<div className="flex flex-col justify-between w-[24px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+									<div
+										className={`bg-white h-[2px] rounded-sm w-7 transform transition-all duration-300 origin-left ${
+											menuOn && "group-focus:translate-x-10"
+										} `}></div>
+									<div
+										className={`bg-white h-[2px] rounded-sm w-4 m-auto transform transition-all duration-300 ${
+											menuOn && "group-focus:translate-x-10"
+										} delay-75`}></div>
+									<div
+										className={`bg-white h-[2px] rounded-sm w-7 transform transition-all duration-300 origin-left ${
+											menuOn && "group-focus:translate-x-10"
+										} delay-150`}></div>
+
+									<div
+										className={`absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 ${
+											menuOn && "group-focus:translate-x-0 group-focus:w-12"
+										} flex w-0`}>
+										<div
+											className={`absolute bg-white h-[2px] rounded-sm w-5 transform transition-all duration-500 rotate-0 delay-300 ${
+												menuOn && "group-focus:rotate-45"
+											}`}></div>
+										<div
+											className={`absolute bg-white h-[2px] rounded-sm w-5 transform transition-all duration-500 -rotate-0 delay-300 ${
+												menuOn && "group-focus:-rotate-45"
+											}`}></div>
+									</div>
+								</div>
+							</div>
+						</button>
+					</div>
+				</div>
+			</div>
 		</motion.header>
 	);
 };
