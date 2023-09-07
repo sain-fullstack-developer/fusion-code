@@ -15,6 +15,7 @@ const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
+	const videoRef = useRef(null);
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -31,6 +32,16 @@ const Home = () => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 3000);
+	}, []);
+
+	useEffect(() => {
+		const video = document.getElementById("video");
+
+		console.log(video);
+
+		if (video) {
+			video.getAttribute("autoPlay");
+		}
 	}, []);
 
 	return (
@@ -57,7 +68,7 @@ const Home = () => {
 										data-wf-ignore="true"
 										data-beta-bgvideo-upgrade="false"
 										className="z-0 w-full h-full absolute object-cover text-white">
-										<video autoPlay={true}>
+										<video loop muted ref={videoRef} id="video" autoPlay={true}>
 											<source
 												src="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.mp4"
 												data-wf-ignore="true"></source>
