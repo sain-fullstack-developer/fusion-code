@@ -42,7 +42,7 @@ const Footer = (props: Props) => {
 				<div className="m-auto sm:mr-auto">
 					<Button
 						type="button"
-						className="border-pixel border-white bg-none rounded-full px-4 py-2 text-white hover:bg-btnBg"
+						className="border-[1px] border-white bg-none rounded-full px-4 py-2 text-white hover:bg-btnBg"
 						noArrow={true}>
 						Stay tuned for our updates
 					</Button>

@@ -9,7 +9,12 @@ body {
 .scroll-animate {
 	display: flex;
 	flex-wrap: nowrap;
-	animation: scroll 20s linear infinite;
+	animation: scroll 10s linear infinite;
+}
+.scroll-animate-right {
+	display: flex;
+	flex-wrap: nowrap;
+	animation: scroll-right 10s linear infinite;
 }
 
 .gradients {
@@ -18,12 +23,26 @@ body {
 	background-clip: text;
 	color: transparent;
 }
-
-@media (max-width: 600px) {
-	.scroll-animate {
-		animation: scroll 10s linear infinite;
-	}
+.caption-text {
+	background: linear-gradient(45deg, #3b00ff, #c700ff);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
+.gray-text {
+	background: linear-gradient(#968abc, rgba(150, 138, 188, 0.3));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.gray-secondary {
+	background: linear-gradient(#fff, rgba(255, 255, 255, 0.7));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+
 
 @keyframes scroll {
 	0% {
@@ -31,5 +50,13 @@ body {
 	}
 	100% {
 		transform: translateX(-100%);
+	}
+}
+@keyframes scroll-right {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(40%);
 	}
 }

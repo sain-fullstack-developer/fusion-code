@@ -51,7 +51,7 @@ const SectionBlock = (props: Props) => {
 				<p className="text-lg mb-10">{text}</p>
 				<Button
 					type="button"
-					className="border-2 border-borderBlue hover:border-pixel hover:bg-btnBg bg-none rounded-full py-4 px-8">
+					className="border-2 border-borderBlue hover:border-[1px] hover:bg-btnBg bg-none rounded-full py-4 px-8">
 					See full case Study
 				</Button>
 			</motion.div>

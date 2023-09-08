@@ -3,9 +3,12 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Props = {};
+type Props = {
+	scrollContacts: () => void;
+};
 
 const Header = (props: Props) => {
+	const { scrollContacts } = props;
 	const [headerBg, setHeaderBg] = useState("");
 	const [lightMode, setLightMode] = useState(false);
 	const [menuOn, setMenuOn] = useState(false);
@@ -82,13 +85,11 @@ const Header = (props: Props) => {
 					<li className="block sm:hidden">
 						<div className="relative inline-flex group">
 							<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-							<a
-								href="#"
-								title="Get quote now"
-								className="relative inline-flex items-center justify-center px-6 py-3 text-base text-white transition-all duration-200 bg-btnBg rounded-lg ring-1  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-								role="button">
+							<div
+								onClick={() => scrollContacts()}
+								className="cursor-pointer relative inline-flex items-center justify-center px-6 py-3 text-base text-white transition-all duration-200 bg-btnBg rounded-lg ring-1  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
 								Hire us
-							</a>
+							</div>
 						</div>
 					</li>
 				</ul>
@@ -97,13 +98,11 @@ const Header = (props: Props) => {
 			<div className="flex gap-4">
 				<div className="relative hidden sm:inline-flex group">
 					<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-					<a
-						href="#"
-						title="Get quote now"
-						className="relative inline-flex items-center justify-center px-6 py-3 text-base text-white transition-all duration-200 bg-btnBg rounded-lg ring-1  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-						role="button">
+					<div
+						onClick={() => scrollContacts()}
+						className="cursor-pointer relative inline-flex items-center justify-center px-6 py-3 text-base text-white transition-all duration-200 bg-btnBg rounded-lg ring-1  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
 						Hire us
-					</a>
+					</div>
 				</div>
 				<div
 					onClick={() => {

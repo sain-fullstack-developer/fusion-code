@@ -40,15 +40,14 @@ module.exports = {
 				btnBg: "linear-gradient(45deg,#0a02a6,#300279 81%,#33036c)",
 				videoBg:
 					"https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-poster-00001.jpg",
-			},
-			height: {
-				pixel: "1px",
-			},
-			borderWidth: {
-				pixel: "1px",
+				card: "linear-gradient(transparent,rgba(159,118,255,.7) 60%,#745cff 20%,rgba(159,118,255,.7) 20%,transparent)",
+				services:
+					"url('https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/64935d55c6acb4b535de4ca5_grain.webp')",
+				border: "linear-gradient(45deg,#3e01ff,#cd07ee 50%,#fd4450)",
 			},
 			borderColor: {
 				borderBlue: "rgb(22,2,152)",
+				card: "rgba(255,255,255,.8)",
 			},
 			backgroundColor: {
 				primary: "rgba(0,0,0,1)",
@@ -70,6 +69,7 @@ module.exports = {
 			},
 			boxShadow: {
 				custom: "6px 6px 32px rgba(0,0,255,.6)",
+				card: "0 32px 64px rgba(1,1,255,.08)",
 			},
 		},
 	},
