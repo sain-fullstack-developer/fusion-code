@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "./Button";
+import TitleIcon from "@/elements/TitleIcon";
 
 type Props = {};
 
@@ -8,7 +9,7 @@ const ContactForm = (props: Props) => {
 	return (
 		<div className="px-4 py-10">
 			<div className="flex pb-2">
-				<Image src="" width={20} height={20} alt="icon" className="" />
+				<TitleIcon width={24} height={24} color="blue" />
 				<p className="ml-2 text-xl  caption-text">Start a project</p>
 			</div>
 			<h3 className="pb-10 text-4xl text-white sm:pb-20 sm:text-6xl font-roc">
@@ -16,8 +17,9 @@ const ContactForm = (props: Props) => {
 			</h3>
 			<div className="grid sm:grid-cols-custom gap-y-6 sm:gap-6">
 				<div className="border-[1px] border-[#0e1327] rounded-2xl p-4 lg:p-10 bg-[rgba(0,0,20,.92)]  h-fit">
-					<div className="bg-black border-2 border-[#0e1327] rounded-full w-24 h-24 lg:mb-4">
-						<Image src="" width={100} height={100} alt="icon" className="" />
+					<div className="bg-black border-2 border-[#0e1327] rounded-full w-24 h-24 lg:mb-4 grid place-items-center">
+						{/* <Image src="" width={100} height={100} alt="icon" className="" /> */}
+						<TitleIcon width={60} height={60} color="blue" />
 					</div>
 					<div className="pb-4 text-2xl font-roc">
 						<span className="caption-text">Free</span> 30min consultation

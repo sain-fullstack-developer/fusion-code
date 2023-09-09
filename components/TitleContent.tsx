@@ -92,10 +92,10 @@ const TitleContent = (props: Props) => {
 					<h2
 						className={`${headingClass} ${
 							noIcon && "text-xl sm:text-2xl md:text-2xl lg:text-2xl"
-						} font-roc text-4xl sm:text-5xl md:text-6xl font-medium text-[#0c0228] pb-4 md:pb-8`}>
+						} font-roc text-4xl sm:text-5xl md:text-6xl font-medium text-content pb-4 md:pb-8`}>
 						{title}
 					</h2>
-					<p className={`${textClass} text-base sm:text-lg text-[#0c0228]`}>
+					<p className={`${textClass} text-base sm:text-lg text-content`}>
 						{text}
 					</p>
 				</div>

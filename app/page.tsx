@@ -3,13 +3,16 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer.";
 import Header from "@/components/Header";
 import IconTitle from "@/components/IconTitle";
-import SectionBlock from "@/components/SectionBlock";
 import {
+	ClientReviewsData,
 	cardData,
+	curativeHeads,
 	devSkills,
+	faqCardData,
 	faqNavList,
 	platformData,
-	sectionData,
+	serviceNavs,
+	servicesCardData,
 	teamsData,
 } from "@/data";
 import React, { useEffect, useRef, useState } from "react";
@@ -22,13 +25,25 @@ import ServicesCard from "@/components/ServicesCard";
 import GradientButton from "@/components/GradientButton";
 import WorkWithUsCard from "@/components/WorkWithUsCard";
 import ClientReviewCard from "@/components/ClientReviewCard";
+import FaqCard from "@/components/FaqCard";
+import TitleIcon from "@/elements/TitleIcon";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [faqNavOn, setFaqNavOn] = useState(0);
+	const [serviceNav, setServiceNav] = useState(0);
+	const [servicesData, setServicesData] = useState(0);
+	const [faqDataState, setFaqDataState] = useState(0);
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [hue, setHue] = useState(0);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
 	const scrollContactRef = useRef(null);
+	const servicesRef = useRef(null);
+	const faqCardRef = useRef(null);
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -41,46 +56,129 @@ const Home = () => {
 		["0vh", "40vh"]
 	);
 
+	const generateRandomHue = () => {
+		const hue = Math.floor(Math.random() * 360);
+		setHue(hue);
+	};
+
 	useEffect(() => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 3000);
 	}, []);
 
-	const onScrollToContactsEl = async () => {
-		console.log(scrollContactRef);
+	useEffect(() => {
+		const interval = setInterval(generateRandomHue, 1000);
+		return () => clearInterval(interval);
+	}, []);
+
+	const onScrollToContactsEl: any = async () => {
 		window.scrollTo({
 			top: window.scrollY + scrollContactRef?.current?.offsetTop,
 			behavior: "smooth",
 		});
 	};
 
-	function nextSlide() {
-		let activeSlide = document.querySelector(".slide.translate-x-0");
-		activeSlide?.classList.remove("translate-x-0");
-		activeSlide?.classList.add("-translate-x-full");
+	const handleFaqClick = (index: number) => {
+		setFaqNavOn(index);
+		setFaqDataState(index);
+		faqCardRef?.current?.classList?.add("card-animate");
+	};
 
-		let nextSlide = activeSlide?.nextElementSibling;
-		nextSlide?.classList.remove("translate-x-full");
-		nextSlide?.classList.add("translate-x-0");
-	}
+	const handleServiceNav = (index: number) => {
+		setServiceNav(index);
+		setServicesData(index);
+	};
 
-	function previousSlide() {
-		let activeSlide = document?.querySelector(".slide.translate-x-0");
-		activeSlide?.classList.remove("translate-x-0");
-		activeSlide?.classList.add("translate-x-full");
+	const NextArrowFunc = (props: any) => {
+		const { onClick } = props;
+		return (
+			<div
+				onClick={onClick}
+				className="w-8 h-8 p-2 rounded-lg border-black border-[1px] cursor-pointer absolute -bottom-20 right-0">
+				<svg
+					width="100%"
+					height="100%"
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M12.6893 7.25L6.96967 1.53033L8.03033 0.469666L15.5607 8L8.03033 15.5303L6.96967 14.4697L12.6893 8.75H0.5V7.25H12.6893Z"
+						fill="currentColor"></path>
+				</svg>
+			</div>
+		);
+	};
 
-		let previousSlide = activeSlide?.previousElementSibling;
-		previousSlide?.classList.remove("-translate-x-full");
-		previousSlide?.classList.add("translate-x-0");
-	}
+	const PrevArrowFunc = (props: any) => {
+		const { onClick } = props;
+		return (
+			<div
+				onClick={onClick}
+				className="w-8 h-8 p-2 rounded-lg border-black border-[1px] cursor-pointer absolute -bottom-20 right-14">
+				<svg
+					width="100%"
+					height="100%"
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M3.31066 8.75001L9.03033 14.4697L7.96967 15.5303L0.439339 8.00001L7.96967 0.469676L9.03033 1.53034L3.31066 7.25001L15.5 7.25L15.5 8.75L3.31066 8.75001Z"
+						fill="currentColor"></path>
+				</svg>
+			</div>
+		);
+	};
 
+	const settings = {
+		prevArrow: <PrevArrowFunc />,
+		nextArrow: <NextArrowFunc />,
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					infinite: true,
+					dots: true,
+				},
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					initialSlide: 1,
+				},
+			},
+		],
+	};
+
+	useEffect(() => {
+		if (currentIndex === curativeHeads.length - 1) {
+			console.log("stopping");
+			return;
+		}
+		const interval = setInterval(() => {
+			const updatedData = currentIndex + 1;
+			setCurrentIndex(updatedData);
+		}, 1000);
+
+		return () => clearInterval(interval);
+	}, [currentIndex]);
 	return (
 		<>
-			{/* {isLoading && <InitialPage />} */}
+			{isLoading && <InitialPage />}
 			{!isLoading && (
 				<>
-					<Header scrollContacts={onScrollToContactsEl} />
+					<div className="z-50">
+						<Header scrollContacts={onScrollToContactsEl} />
+					</div>
 					<motion.main
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -131,7 +229,7 @@ const Home = () => {
 							</div>
 						</section>
 
-						<motion.section className={`z-30 relative pb-40 bg-primary`}>
+						<motion.section className={`z-20 relative pb-40 bg-primary`}>
 							<div className="pt-20 pb-10 text-center mb-12 bg-primary">
 								<TitleContent
 									headingClass="text-white text-3xl sm:text-6xl"
@@ -162,18 +260,18 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="p-4 sm:p-12 relative">
-								<div className="absolute bg-radial h-full w-full top-0"></div>
-								<div className="w-full ml-auto mr-auto p-[1px] rounded-lg bg-card relative">
-									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-16 text-[#0c0228] text-base z-10">
+							<div className="p-4 sm:p-12 my-10 sm:my-20 relative">
+								<div className="absolute bg-radial h-full w-1/2 sm:w-full transform top-0"></div>
+								<div className="w-full p-[1px] rounded-lg bg-card relative">
+									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-16 text-content text-base z-10">
 										<div className="text-center">
 											<h2 className="gray-text text-4xl font-roc mb-6 font-medium">
 												No fluff, no long processes, no bloated teams...
 											</h2>
-											<h2 className="gray-secondary text-6xl font-roc font-medium mb-2">
+											<h2 className="gray-secondary text-3xl md:text-6xl font-roc font-medium mb-2">
 												Streamlined design and development.
 											</h2>
-											<h2 className="gray-secondary text-6xl font-roc font-medium">
+											<h2 className="gray-secondary text-3xl md:text-6xl font-roc font-medium">
 												Swift and remarkable results.
 											</h2>
 										</div>
@@ -181,24 +279,25 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="bg-[#f4f1eb] w-full relative p-20 min-h-screen">
+							<div className="bg-[#f4f1eb] w-full relative p-6 lg:px-20 lg:py-32 min-h-screen">
 								<div className="text-center w-full max-w-[54rem] m-auto pb-20 lg:pb-32">
 									<div className="flex pb-6 justify-center">
-										<Image
-											src=""
-											width={20}
-											height={20}
-											alt="icon"
-											className=""
-										/>
-										<p className="ml-2 text-sm font-medium caption-text">
+										<TitleIcon width={24} height={24} color="blue" />
+										<p className="ml-2 text-base font-semibold caption-text">
 											What we do
 										</p>
 									</div>
-									<h2 className="font-roc text-4xl sm:text-5xl md:text-6xl font-medium text-[#0c0228] pb-4 md:pb-8">
-										Choose all the service
-										<span className="bg-blue-400">blocks</span> or just the ones
-										you need...
+									<h2 className="font-roc text-4xl text-[#0c0228] sm:text-5xl md:text-[3.5rem] md:leading-tight font-medium text-content pb-4 md:pb-8">
+										Choose all the service &nbsp;
+										<span
+											style={{
+												backgroundColor: `hsla(${hue}, 100%, 50%, 0.2)`,
+											}}
+											className="bg-textBg py-2 border-2 border-r-blue-600 border-l-blue-600">
+											<span>blocks</span>
+										</span>
+										<br />
+										or just the ones you need...
 									</h2>
 									<p className="text-base sm:text-lg">
 										Tailored services <strong>without the agency fluff:</strong>
@@ -208,45 +307,54 @@ const Home = () => {
 									</p>
 								</div>
 								<div className="hidden lg:block lg:sticky lg:top-52">
-									<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50">
-										Branding
-									</h2>
-									<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50">
-										Website Design
-									</h2>
-									<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50">
-										Webflow Development
-									</h2>
-									<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 gradients">
-										Product Design
-									</h2>
+									{serviceNavs.map((service, index) => {
+										return (
+											<h2
+												onClick={() => handleServiceNav(index)}
+												key={index}
+												className={`${
+													index === serviceNav
+														? "gradients opacity-100"
+														: index !== serviceNav
+														? "opacity-50"
+														: ""
+												} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8`}>
+												{service}
+											</h2>
+										);
+									})}
 								</div>
-								<div className="grid md:place-items-center md:grid-cols-1  lg:grid-cols-custom gap-4 md:gap-8 lg:-mt-72">
+								<div className="grid md:place-items-center md:grid-cols-1 lg:grid-cols-custom gap-4 md:gap-8 lg:-mt-72">
 									<div>
 										<div className="text-center lg:hidden">
-											<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50">
-												Branding
-											</h2>
-											<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50">
-												Website Design
-											</h2>
-											<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50">
-												Webflow Development
-											</h2>
-											<h2 className="text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 gradients">
-												Product Design
-											</h2>
+											{serviceNavs.map((service, index) => {
+												return (
+													<h2
+														onClick={() => handleServiceNav(index)}
+														key={index}
+														className={`${
+															index === serviceNav
+																? "gradients opacity-100"
+																: index !== serviceNav
+																? "opacity-50"
+																: ""
+														}
+														cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50`}>
+														{service}
+													</h2>
+												);
+											})}
 										</div>
 									</div>
 
-									<div>
-										{[1, 2, 3, 4, 5, 6, 7].map((service, index) => {
+									<div ref={servicesRef}>
+										{servicesCardData[servicesData].name.map((card, i) => {
 											return (
 												<ServicesCard
-													key={index}
-													title="Defining the product vision"
-													caption="Crafting the product vision"
-													text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!"
+													key={i}
+													title={card?.title}
+													caption={card?.caption}
+													text={card?.text}
 												/>
 											);
 										})}
@@ -254,30 +362,24 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="py-6 sm:py-8 lg:py-20 text-center border-t-[1px] border-card">
+							<div className="px-4 sm:px-0 py-20 text-center border-t-[1px] border-card">
 								<div className="flex pb-6 justify-center">
-									<Image
-										src=""
-										width={20}
-										height={20}
-										alt="icon"
-										className=""
-									/>
-									<p className="ml-2 text-sm font-medium caption-text">
+									<TitleIcon width={24} height={24} color="blue" />
+									<p className="ml-2 text-lg font-medium caption-text">
 										Who you’re working with
 									</p>
 								</div>
 								<div className="pt-2 pb-6 sm:pb-10 lg:pb-20">
-									<h2 className="gray-secondary text-6xl font-roc font-medium">
+									<h2 className="gray-secondary text-4xl md:text-6xl font-roc font-medium">
 										A curated collective of
 									</h2>
-									<h2 className="gradients text-6xl font-roc font-medium">
-										developers
+									<h2 className="gradients text-4xl md:text-6xl font-roc font-medium">
+										{curativeHeads[currentIndex]}
 									</h2>
 								</div>
 
 								<div className="px-4 sm:px-20 lg:px-32">
-									<h3 className="gray-secondary text-6xl font-roc font-medium pb-6 md:pb-8">
+									<h3 className="font-roc text-left gray-secondary text-4xl md:text-6xl  font-medium pb-6 md:pb-8 lg:text-left">
 										Exceptional work is the baseline, doing what we love is the
 										mission.
 									</h3>
@@ -288,7 +390,7 @@ const Home = () => {
 													return (
 														<div
 															key={index}
-															className="bg-border rounded-full w-full p-1">
+															className="bg-border rounded-full w-full p-[1px]">
 															<Button
 																type="button"
 																circle={true}
@@ -307,7 +409,7 @@ const Home = () => {
 													return (
 														<div
 															key={index}
-															className="bg-border rounded-full w-full p-1">
+															className="bg-border rounded-full w-full p-[1px]">
 															<Button
 																type="button"
 																circle={true}
@@ -320,11 +422,11 @@ const Home = () => {
 												})}
 											</div>
 										</div>
-										<div>
-											<h3 className="gray-secondary text-2xl font-semibold pb-4">
+										<div className="text-left">
+											<h3 className="gray-secondary font-roc text-2xl font-semibold pb-4">
 												The right talent, in the right place, at the right time.
 											</h3>
-											<div className="gray-secondary text-lg pb-4">
+											<div className="gray-secondary text-base sm:text-lg pb-4">
 												Jords+Co are a remarkable and meticulously curated
 												remote team located in the UK, Europe and the US
 												comprising of experts in their respective domains.
@@ -344,36 +446,30 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="p-4 lg:p-20 grid md:grid-cols-custom2 gap-6">
-								<div className="">
-									<div className="grid pb-6 justify-center">
-										<Image
-											src=""
-											width={20}
-											height={20}
-											alt="icon"
-											className="pb-2"
-										/>
-										<p className="text-sm font-medium caption-text pb-4">
-											Values
-										</p>
-										<p className="text-4xl font-medium text-white pb-4 md:pb-10 font-roc">
+							<div className="min-h-screen bg-black py-10 lg:p-20 grid sm:place-items-center md:grid-cols-custom2 gap-6">
+								<div className="w-full place-items-center">
+									<div className="pb-6 w-full sm:text-center">
+										<div className="flex w-full justify-center">
+											<TitleIcon width={24} height={24} color="blue" />
+											<p className="text-lg font-medium caption-text pb-4 ml-2">
+												Values
+											</p>
+										</div>
+										<p className="text-4xl text-center font-medium text-white pb-4 md:pb-10 font-roc">
 											Why work <br /> with us
 										</p>
-										<div className="w-96 p-4">
+										<div className="w-96 p-4 text-center">
 											<GradientButton>Contact Us</GradientButton>
 										</div>
 									</div>
 								</div>
-								<div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+								<div className="grid place-items-center sm:grid-cols-2 gap-4 md:gap-6">
 									<WorkWithUsCard />
 									<WorkWithUsCard />
 									<WorkWithUsCard />
 									<WorkWithUsCard />
 								</div>
 							</div>
-
-							{/* // who we work with section */}
 
 							<div className="p-10 lg:p-20 bg-[#f4f1eb] min-h-screen">
 								<div className="w-full lg:w-2/3 pb-6 lg:pb-20">
@@ -435,11 +531,11 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="bg-[#f4f1eb] p-10 md:p-20">
+							<div className="bg-[#f4f1eb] px-10 md:px-20 py-32 min-h-screen">
 								<TitleContent
 									GradientTitle={true}
 									caption="What people say"
-									textClass="text-white/60 text-xl mb-20"
+									textClass="text-white/60 text-xl"
 									title="Client reviews"
 									initial={{ y: 100, opacity: 0 }}
 									whileInView={{ y: 0, opacity: 1 }}
@@ -448,20 +544,26 @@ const Home = () => {
 									iconWidth={24}
 								/>
 
-								<div className="grid md:grid-cols-3 lg:gap-10 gap-y-12">
-									<div className="transition-all ease-in-out duration-1000 transform">
-										<ClientReviewCard />
-									</div>
-									<div className="transition-all ease-in-out duration-1000 transform">
-										<ClientReviewCard />
-									</div>
-									<div className="transition-all ease-in-out duration-1000 transform">
-										<ClientReviewCard />
-									</div>
+								<div className="">
+									<Slider {...settings}>
+										{ClientReviewsData.map((data, index) => {
+											return (
+												<div
+													key={index}
+													className="transition-all ease-in-out duration-1000 transform p-6">
+													<ClientReviewCard
+														name={data.name}
+														text={data.text}
+														designation={data.designation}
+													/>
+												</div>
+											);
+										})}
+									</Slider>
 								</div>
 							</div>
 
-							<div className="p-10 md:p-20 bg-black relative h-screen">
+							<div className="p-10 md:p-20 bg-black relative min-h-screen">
 								<div className="bg-radial w-full h-full absolute top-10 left-0 right-0 bottom-0 transform -z-0"></div>
 								<div className="z-40 relative text-center pb-10 md:pb-20 w-full">
 									<TitleContent
@@ -474,25 +576,60 @@ const Home = () => {
 										iconClass="justify-center"
 									/>
 								</div>
-								<div className="z-40 relative flex justify-center w-full">
-									<ul className="flex gap-10">
-										{faqNavList?.map((faq, index) => {
+								<div className="max-w-3xl m-auto">
+									<div className="z-40 relative flex justify-center overflow-hidden no-scrollbar">
+										<ul className="w-screen justify-items-start self-auto ml-[-5vw] pl-[5vw] pr-[5vw] flex overflow-auto gap-10">
+											{faqNavList?.map((faq, index) => {
+												return (
+													<li
+														onClick={() => handleFaqClick(index)}
+														className={`${
+															index === faqNavOn &&
+															"trasition-all border-[1px] border-card rounded-lg gradients px-2 sm:px-4 py-1"
+														} text-base sm:text-lg text-white cursor-pointer w-full whitespace-nowrap text-center`}
+														key={index}>
+														{faq}
+													</li>
+												);
+											})}
+										</ul>
+									</div>
+									<motion.div
+										initial={{ opacity: 0 }}
+										whileInView={{ opacity: 1 }}
+										transition={{ duration: 0.6 }}
+										className="z-40 relative pt-20">
+										{faqCardData[faqDataState]?.name?.map((faq, index) => {
 											return (
-												<li
-													className={`${
-														index === faqNavOn &&
-														"border-[1px] border-card rounded-lg gradients px-4 py-1"
-													} text-lg text-white/80 cursor-pointer`}
+												<div
+													className="text-white"
+													ref={faqCardRef}
 													key={index}>
-													{faq}
-												</li>
+													<FaqCard
+														question={faq.question}
+														answer={faq.answer}
+													/>
+												</div>
 											);
 										})}
-									</ul>
+									</motion.div>
+								</div>
+								<div className="py-10 z-40 relative md:py-20 w-full flex justify-center text-center">
+									<div>
+										<TitleContent
+											GradientTitle={true}
+											noIcon={true}
+											headingClass="text-white lg:text-4xl"
+											textClass="text-white/60 pb-6"
+											title="Still have questions?"
+											text="We're here to help. Contact us directly, and our team will provide you with the personalised support you need."
+										/>
+										<GradientButton>Contact</GradientButton>
+									</div>
 								</div>
 							</div>
 
-							<div className="min-h-screen text-center p-6 sm:p-0 bg-primary">
+							<div className="min-h-screen text-center z-40 relative p-6 sm:p-0 bg-primary">
 								<TitleContent
 									headingClass="text-white text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"

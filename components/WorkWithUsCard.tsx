@@ -4,7 +4,7 @@ type Props = {};
 
 const WorkWithUsCard = (props: Props) => {
 	return (
-		<div className="bg-card w-full border-[1px] rounded-lg border-[#0e1327] p-[1px]">
+		<div className="bg-card w-[90%] sm:w-full border-[1px] rounded-lg border-[#0e1327] p-[1px]">
 			<div className="rounded-lg p-4 bg-[rgba(1,1,4,.9)] w-full h-full">
 				<div className="bg-[rgba(12,2,40,.4)] border-[1px] border-[#0e1327] w-12 h-12  rounded-lg grid place-items-center">
 					<svg

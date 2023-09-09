@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 type Props = {
 	scrollContacts: () => void;
@@ -46,11 +47,17 @@ const Header = (props: Props) => {
 			id="header"
 			className={`${headerBg} ${
 				lightMode ? "bg-gray-100" : "bg-primary"
-			} sm:bg-transparent  flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 z-20 w-full`}>
-			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold">
-				FC
+			} sm:bg-transparent  flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 left-0 z-50 w-full`}>
+			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold flex">
+				<Image
+					src="/logo.png"
+					width={50}
+					height={50}
+					className=""
+					alt="logo-image"
+				/>
+				Fusion Code
 			</div>
-
 			<motion.nav
 				id="navList"
 				className={`${

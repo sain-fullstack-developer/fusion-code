@@ -44,6 +44,8 @@ module.exports = {
 				services:
 					"url('https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/64935d55c6acb4b535de4ca5_grain.webp')",
 				border: "linear-gradient(45deg,#3e01ff,#cd07ee 50%,#fd4450)",
+				textBg:
+					"linear-gradient(90deg,rgba(80,0,255,.4),rgba(255,255,255,0) 50%,rgba(80,0,255,.4))",
 			},
 			borderColor: {
 				borderBlue: "rgb(22,2,152)",
@@ -59,6 +61,7 @@ module.exports = {
 			color: {
 				first: "rgb(22,24,28)",
 				secondary: "rgb(255,83,0)",
+				content: "#0c0228",
 			},
 			gridTemplateColumns: {
 				custom: "0.6fr 1fr",
