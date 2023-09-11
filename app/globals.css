@@ -135,12 +135,8 @@ body {
 	100% {
 		transform: translateX(-100%);
 	}
-<<<<<<< HEAD
 } */
 
-=======
-}
->>>>>>> d5bf82b4a4cf3f52e70a00acb8068a732565cb1f
 
 @keyframes scroll-right {
 	0% {
@@ -151,20 +147,9 @@ body {
 		transform: translateX(40%);
 	}
 }
-<<<<<<< HEAD
 
 @media only screen and (max-width: 768px) {
 	.custom-text-stroke {
 		-webkit-text-stroke-width: 0.20px;
 	}
 }
-=======
-@keyframes onclick-display {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
->>>>>>> d5bf82b4a4cf3f52e70a00acb8068a732565cb1f
