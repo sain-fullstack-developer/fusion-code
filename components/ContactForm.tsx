@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "./Button";
+import TitleIcon from "@/elements/TitleIcon";
 
 type Props = {};
 
@@ -8,7 +9,7 @@ const ContactForm = (props: Props) => {
 	return (
 		<div className="py-10">
 			<div className="flex pb-2">
-				<Image src="" width={20} height={20} alt="icon" className="" />
+				<TitleIcon width={24} height={24} color="blue" />
 				<p className="ml-2 text-xl  caption-text">Start a project</p>
 			</div>
 			<h3 className="pb-10 text-4xl text-white sm:pb-20 sm:text-6xl font-roc">

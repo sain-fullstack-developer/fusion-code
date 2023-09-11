@@ -1,9 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-type Props = {};
+type Props = {
+	name: string;
+	text: string;
+	designation: string;
+};
 
 const ClientReviewCard = (props: Props) => {
+	const { name, text, designation } = props;
 	return (
 		<div className="bg-[rgba(255,255,255,.4)] border-2 border-[rgba(255,255,255,.8)] p-8 md:p-16 rounded-xl">
 			<Image
@@ -12,13 +17,9 @@ const ClientReviewCard = (props: Props) => {
 				height={10}
 				alt="review-star"
 			/>
-			<p className="text-lg py-4">
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
-				deleniti laborum tempora quam aliquid magni alias itaque dolores. Quas
-				error sit culpa! Rem illum autem rerum ut qui, ex fugit?
-			</p>
-			<p className="font-semibold text-lg">Frank Kirk</p>
-			<p className="text-lg">Frank Kirk</p>
+			<p className="text-lg py-4">{text}</p>
+			<p className="font-semibold text-lg">{name}</p>
+			<p className="text-lg">{designation}</p>
 		</div>
 	);
 };

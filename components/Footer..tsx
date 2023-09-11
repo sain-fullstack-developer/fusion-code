@@ -23,8 +23,15 @@ const Footer = (props: Props) => {
 			className="bg-primary">
 			<div className="grid place-items-center lg:flex lg:justify-evenly gap-6 px-4 md:px-12 py-6">
 				<div>
-					<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold">
-						FC
+					<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold flex">
+						<Image
+							src="/logo.png"
+							width={50}
+							height={50}
+							className=""
+							alt="logo-image"
+						/>
+						Fusion Code
 					</div>
 					<p className="text-white text-center sm:text-left">
 						447 Broadway, 2nd Floor Suite #772,

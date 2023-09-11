@@ -8,9 +8,10 @@ import React from "react";
 type Props = {};
 
 const Technologies = (props: Props) => {
+	const onScrollToContactsEl: any = async () => {};
 	return (
 		<>
-			<Header />
+			<Header scrollContacts={onScrollToContactsEl} />
 			<main className="bg-primary min-h-screen">
 				<section id="section-wrapper-tech relative">
 					<section className="h-screen grid place-items-center">

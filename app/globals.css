@@ -6,6 +6,32 @@ body {
 	scroll-behavior: smooth;
 }
 
+.no-scrollbar {
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+}
+
+.slick-dots {
+	width: 20% !important;
+	left: -20px !important;
+	bottom: -5rem !important;
+	text-align: left !important;
+}
+
+@media (max-width: 600px) {
+	.slick-dots {
+		width: 100% !important;
+	}
+}
+
+.slick-dots li button:before {
+	font-size: 12px !important;
+}
+
+.slick-dots li {
+	margin: 2px !important;
+}
+
 .scroll-animate {
 	display: flex;
 	flex-wrap: nowrap;
@@ -16,6 +42,9 @@ body {
 	display: flex;
 	flex-wrap: nowrap;
 	animation: scroll-right 10s linear infinite;
+}
+.card-animate {
+	animation: onclick-display 1s linear 1;
 }
 
 .gradients {
@@ -106,8 +135,12 @@ body {
 	100% {
 		transform: translateX(-100%);
 	}
+<<<<<<< HEAD
 } */
 
+=======
+}
+>>>>>>> d5bf82b4a4cf3f52e70a00acb8068a732565cb1f
 
 @keyframes scroll-right {
 	0% {
@@ -118,9 +151,20 @@ body {
 		transform: translateX(40%);
 	}
 }
+<<<<<<< HEAD
 
 @media only screen and (max-width: 768px) {
 	.custom-text-stroke {
 		-webkit-text-stroke-width: 0.20px;
 	}
 }
+=======
+@keyframes onclick-display {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+>>>>>>> d5bf82b4a4cf3f52e70a00acb8068a732565cb1f

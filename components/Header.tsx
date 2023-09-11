@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 type Props = {
 	scrollContacts: () => void;
@@ -50,7 +51,6 @@ const Header = (props: Props) => {
 			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold relative z-20 ">
 				FC
 			</div>
-
 			<motion.nav
 				id="navList"
 				className={`${

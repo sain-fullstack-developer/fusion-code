@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 type Props = {};
 
 const Works = (props: Props) => {
+	const onScrollToContactsEl: any = async () => {};
 	return (
 		<Fragment>
 			<motion.main
@@ -18,7 +19,7 @@ const Works = (props: Props) => {
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1.5 }}
 				className="bg-primary">
-				<Header />
+				<Header scrollContacts={onScrollToContactsEl} />
 				<section className="pb-40 z-10" id="section-wrapper-works">
 					<div className="">
 						<div className="px-10 py-20 sm:p-40 pb-4 relative z-0">

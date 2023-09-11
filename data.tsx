@@ -347,3 +347,353 @@ export const faqNavList = [
 	"Development",
 	"DesignWave",
 ];
+
+export const serviceNavs = [
+	"Branding",
+	"Website Design",
+	"Webflow Development",
+	"Product Design",
+];
+
+export const faqCardData = [
+	{
+		name: [
+			{
+				question: "What size budgets do you typically work with? One",
+				answer:
+					"We typically work with clients within the following project brackets £2-5k £5-10k £10-20k £25k+",
+			},
+			{
+				question: "How do I figure out how much your services will cost?",
+				answer:
+					"Determining the cost of our services is best achieved through a 15-30 minute discovery call, where we can understand your unique requirements. Following that, we will provide a transparent and detailed price within 24-48 hours tailored specifically to your needs.",
+			},
+			{
+				question: "What are the payment terms for a typical project?",
+				answer: "50% to begin, 25% halfway through, and 25% upon delivery.",
+			},
+			{
+				question: "How much does Webflow hosting cost?",
+				answer:
+					"The cost of Webflow hosting depends on the specific plan you choose. Webflow offers a variety of hosting plans with different features and pricing tiers. It's best to visit the Webflow website or contact their sales team directly for the most up-to-date and accurate pricing information for their hosting services.",
+			},
+			{
+				question: "Retainer pricing",
+				answer:
+					"Need design and Webflow development delivery on a continual basis? Schedule a discovery call and we can create a flexible retainer specifically for your needs.",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				question: "What size budgets do you typically work with? two",
+				answer:
+					"We typically work with clients within the following project brackets £2-5k £5-10k £10-20k £25k+",
+			},
+			{
+				question: "How do I figure out how much your services will cost?",
+				answer:
+					"Determining the cost of our services is best achieved through a 15-30 minute discovery call, where we can understand your unique requirements. Following that, we will provide a transparent and detailed price within 24-48 hours tailored specifically to your needs.",
+			},
+			{
+				question: "What are the payment terms for a typical project?",
+				answer: "50% to begin, 25% halfway through, and 25% upon delivery.",
+			},
+			{
+				question: "How much does Webflow hosting cost?",
+				answer:
+					"The cost of Webflow hosting depends on the specific plan you choose. Webflow offers a variety of hosting plans with different features and pricing tiers. It's best to visit the Webflow website or contact their sales team directly for the most up-to-date and accurate pricing information for their hosting services.",
+			},
+			{
+				question: "Retainer pricing",
+				answer:
+					"Need design and Webflow development delivery on a continual basis? Schedule a discovery call and we can create a flexible retainer specifically for your needs.",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				question: "What size budgets do you typically work with? three",
+				answer:
+					"We typically work with clients within the following project brackets £2-5k £5-10k £10-20k £25k+",
+			},
+			{
+				question: "How do I figure out how much your services will cost?",
+				answer:
+					"Determining the cost of our services is best achieved through a 15-30 minute discovery call, where we can understand your unique requirements. Following that, we will provide a transparent and detailed price within 24-48 hours tailored specifically to your needs.",
+			},
+			{
+				question: "What are the payment terms for a typical project?",
+				answer: "50% to begin, 25% halfway through, and 25% upon delivery.",
+			},
+			{
+				question: "How much does Webflow hosting cost?",
+				answer:
+					"The cost of Webflow hosting depends on the specific plan you choose. Webflow offers a variety of hosting plans with different features and pricing tiers. It's best to visit the Webflow website or contact their sales team directly for the most up-to-date and accurate pricing information for their hosting services.",
+			},
+			{
+				question: "Retainer pricing",
+				answer:
+					"Need design and Webflow development delivery on a continual basis? Schedule a discovery call and we can create a flexible retainer specifically for your needs.",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				question: "What size budgets do you typically work with? four",
+				answer:
+					"We typically work with clients within the following project brackets £2-5k £5-10k £10-20k £25k+",
+			},
+			{
+				question: "How do I figure out how much your services will cost?",
+				answer:
+					"Determining the cost of our services is best achieved through a 15-30 minute discovery call, where we can understand your unique requirements. Following that, we will provide a transparent and detailed price within 24-48 hours tailored specifically to your needs.",
+			},
+			{
+				question: "What are the payment terms for a typical project?",
+				answer: "50% to begin, 25% halfway through, and 25% upon delivery.",
+			},
+			{
+				question: "How much does Webflow hosting cost?",
+				answer:
+					"The cost of Webflow hosting depends on the specific plan you choose. Webflow offers a variety of hosting plans with different features and pricing tiers. It's best to visit the Webflow website or contact their sales team directly for the most up-to-date and accurate pricing information for their hosting services.",
+			},
+			{
+				question: "Retainer pricing",
+				answer:
+					"Need design and Webflow development delivery on a continual basis? Schedule a discovery call and we can create a flexible retainer specifically for your needs.",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				question: "What size budgets do you typically work with?",
+				answer:
+					"We typically work with clients within the following project brackets £2-5k £5-10k £10-20k £25k+",
+			},
+			{
+				question: "How do I figure out how much your services will cost?",
+				answer:
+					"Determining the cost of our services is best achieved through a 15-30 minute discovery call, where we can understand your unique requirements. Following that, we will provide a transparent and detailed price within 24-48 hours tailored specifically to your needs.",
+			},
+			{
+				question: "What are the payment terms for a typical project?",
+				answer: "50% to begin, 25% halfway through, and 25% upon delivery.",
+			},
+			{
+				question: "How much does Webflow hosting cost?",
+				answer:
+					"The cost of Webflow hosting depends on the specific plan you choose. Webflow offers a variety of hosting plans with different features and pricing tiers. It's best to visit the Webflow website or contact their sales team directly for the most up-to-date and accurate pricing information for their hosting services.",
+			},
+			{
+				question: "Retainer pricing",
+				answer:
+					"Need design and Webflow development delivery on a continual basis? Schedule a discovery call and we can create a flexible retainer specifically for your needs.",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				question: "What size budgets do you typically work with?",
+				answer:
+					"We typically work with clients within the following project brackets £2-5k £5-10k £10-20k £25k+",
+			},
+			{
+				question: "How do I figure out how much your services will cost?",
+				answer:
+					"Determining the cost of our services is best achieved through a 15-30 minute discovery call, where we can understand your unique requirements. Following that, we will provide a transparent and detailed price within 24-48 hours tailored specifically to your needs.",
+			},
+			{
+				question: "What are the payment terms for a typical project?",
+				answer: "50% to begin, 25% halfway through, and 25% upon delivery.",
+			},
+			{
+				question: "How much does Webflow hosting cost?",
+				answer:
+					"The cost of Webflow hosting depends on the specific plan you choose. Webflow offers a variety of hosting plans with different features and pricing tiers. It's best to visit the Webflow website or contact their sales team directly for the most up-to-date and accurate pricing information for their hosting services.",
+			},
+			{
+				question: "Retainer pricing",
+				answer:
+					"Need design and Webflow development delivery on a continual basis? Schedule a discovery call and we can create a flexible retainer specifically for your needs.",
+			},
+		],
+	},
+];
+export const servicesCardData = [
+	{
+		name: [
+			{
+				title: "onen",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				title: "two",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				title: "Three",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+		],
+	},
+	{
+		name: [
+			{
+				title: "Four",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+			{
+				title: "Defining the product vision",
+				caption: "Crafting the product vision",
+				text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+			},
+		],
+	},
+];
+export const ClientReviewsData = [
+	{
+		name: "one",
+		designation: "Crafting the product vision",
+		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+	},
+	{
+		name: "two",
+		designation: "Crafting the product vision",
+		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+	},
+	{
+		name: "three",
+		designation: "Crafting the product vision",
+		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+	},
+	{
+		name: "four",
+		designation: "Crafting the product vision",
+		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+	},
+	{
+		name: "five",
+		designation: "Crafting the product vision",
+		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia iure sed quod consequatur accusamus error nobis vitae magnam eligendi adipisci, ea commodi eum, nisi necessitatibus facilis laboriosam, accusantium consequuntur!",
+	},
+];
+
+export const curativeHeads = [
+	"developers",
+	"problem solvers",
+	"creative thinkers",
+	"design",
+];
