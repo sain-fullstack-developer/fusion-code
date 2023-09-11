@@ -7,7 +7,7 @@ type Props = {};
 
 const ContactForm = (props: Props) => {
 	return (
-		<div className="px-4 py-10">
+		<div className="py-10">
 			<div className="flex pb-2">
 				<TitleIcon width={24} height={24} color="blue" />
 				<p className="ml-2 text-xl  caption-text">Start a project</p>
@@ -16,30 +16,32 @@ const ContactForm = (props: Props) => {
 				Let&apos;s talk about you
 			</h3>
 			<div className="grid sm:grid-cols-custom gap-y-6 sm:gap-6">
-				<div className="border-[1px] border-[#0e1327] rounded-2xl p-4 lg:p-10 bg-[rgba(0,0,20,.92)]  h-fit">
-					<div className="bg-black border-2 border-[#0e1327] rounded-full w-24 h-24 lg:mb-4 grid place-items-center">
-						{/* <Image src="" width={100} height={100} alt="icon" className="" /> */}
-						<TitleIcon width={60} height={60} color="blue" />
+				<div className="  h-fit hover-trigger">
+					<div className="hover-state-indicator hover-line"></div>
+					<div className="border-[1px] border-[#3B3B40] rounded-2xl p-4 lg:p-10 bg-[rgba(0,0,20,.92)]">
+						<div className="bg-black border-2 border-[#0e1327] rounded-full w-24 h-24 lg:mb-4">
+							<Image src="" width={100} height={100} alt="icon" className="" />
+						</div>
+						<div className="pb-4 text-2xl font-roc">
+							<span className="caption-text">Free</span> 30min consultation
+						</div>
+						<div className="pb-6">
+							<p className="text-white/80 md:text-lg">
+								Have a new project in mind? Schedule a 30-minute discovery call
+								or fill out the quick form, and together we&apos;ll explore the
+								possibilities.
+							</p>
+						</div>
+						<div className="">
+							<Button
+								noArrow={true}
+								className="p-3 rounded-lg border-[1px] border-white/40 bg-btnBg"
+								type="button">
+								Schedule discovery call
+							</Button>
+						</div>
+						<div className="pb-4"></div>
 					</div>
-					<div className="pb-4 text-2xl font-roc">
-						<span className="caption-text">Free</span> 30min consultation
-					</div>
-					<div className="pb-6">
-						<p className="text-white/80 md:text-lg">
-							Have a new project in mind? Schedule a 30-minute discovery call or
-							fill out the quick form, and together we&apos;ll explore the
-							possibilities.
-						</p>
-					</div>
-					<div className="">
-						<Button
-							noArrow={true}
-							className="p-3 rounded-lg border-[1px] border-white/40 bg-btnBg"
-							type="button">
-							Schedule discovery call
-						</Button>
-					</div>
-					<div className="pb-4"></div>
 				</div>
 
 				<div className="">

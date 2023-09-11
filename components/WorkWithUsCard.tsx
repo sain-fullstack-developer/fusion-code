@@ -4,9 +4,10 @@ type Props = {};
 
 const WorkWithUsCard = (props: Props) => {
 	return (
-		<div className="bg-card w-[90%] sm:w-full border-[1px] rounded-lg border-[#0e1327] p-[1px]">
-			<div className="rounded-lg p-4 bg-[rgba(1,1,4,.9)] w-full h-full">
-				<div className="bg-[rgba(12,2,40,.4)] border-[1px] border-[#0e1327] w-12 h-12  rounded-lg grid place-items-center">
+		<div className=" w-11/12 hover-trigger">
+			<div className="hover-state-indicator hover-line"></div>
+			<div className="rounded-lg lg:p-8 p-4 w-full h-full border-[1px] border-[#3B3B40]">
+				<div className=" w-12 h-12  rounded-lg grid place-items-center">
 					<svg
 						width="24"
 						height="24"

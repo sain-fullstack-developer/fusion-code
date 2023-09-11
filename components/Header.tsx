@@ -11,7 +11,7 @@ type Props = {
 
 const Header = (props: Props) => {
 	const { scrollContacts, scrollBg } = props;
-	const [headerBg, setHeaderBg] = useState("");
+	const [scrollNavs, setScrollNavs] = useState<Boolean>(false);
 	const [lightMode, setLightMode] = useState(false);
 	const [menuOn, setMenuOn] = useState(false);
 
@@ -28,17 +28,8 @@ const Header = (props: Props) => {
 	const navList = [
 		{ nav: "Home", path: "/" },
 		{ nav: "Works", path: "/works" },
-		{ nav: "TECHNOLOGIES", path: "/technologies" },
-		{ nav: "SERVICES", path: "/services" },
-		{ nav: "COMPANY", path: "/company" },
 		{ nav: "CONTACTS", path: "/contacts" },
 	];
-
-	const { scrollY } = useScroll();
-
-	useMotionValueEvent(scrollY, "change", (latest) => {
-		setHeaderBg(latest > 900 ? "bg-black/10 backdrop-blur" : "");
-	});
 
 	return (
 		<motion.header
@@ -46,18 +37,18 @@ const Header = (props: Props) => {
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.6 }}
 			id="header"
-			className={`${headerBg} ${
+			className={`${
 				scrollBg ? "bg-black" : "bg-transparent"
-			} w-screen flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 left-0 z-50`}>
-			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold flex">
+			} realtive min-h-[4.5rem] w-screen flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 lg:py-3 relative z-50`}>
+			<div className="text-3xl self-center text-white font-roc font-bold flex">
 				<Image
 					src="/logo.png"
-					width={50}
-					height={50}
-					className=""
+					width={80}
+					height={80}
+					className="-mt-2"
 					alt="logo-image"
 				/>
-				Fusion Code
+				Fusion <span className="font-normal">Code</span>
 			</div>
 			<motion.nav
 				id="navList"
@@ -65,15 +56,15 @@ const Header = (props: Props) => {
 					menuOn
 						? "grid sm:place-items-center absolute left-5 sm:left-[14%] bg-black w-[90%] sm:w-fit p-6 rounded-lg ring-1 ring-gray-100 top-20"
 						: "hidden"
-				} lg:block z-40 mt-1 m-auto lg:m-0`}>
-				<ul
+				} lg:block fixed sm:left-[40%] flex justify-center backdrop-blur-lg z-50 p-3 bg-[rgba(5,5,46,.25)] rounded-lg border-[1px] border-[rgba(255,255,255,.16)]`}>
+				<motion.ul
 					className={`${
 						lightMode
 							? "text-black"
 							: menuOn
 							? "text-center grid"
 							: "text-white"
-					}  gap-4 sm:flex sm:gap-4 lg:gap-8 uppercase`}>
+					}  gap-4 sm:flex sm:gap-4 lg:gap-8 uppercase items-center transition-all`}>
 					{navList.map((list, index) => (
 						<Link key={index} href={list.path}>
 							<motion.li
@@ -84,13 +75,17 @@ const Header = (props: Props) => {
 									list.path === path &&
 									"underline underline-offset-4 decoration-[rgb(22,2,152)]"
 								} ${
-									menuOn && "text-white pb-4 text-lg text-center"
+									menuOn && "text-white/60 pb-4 text-lg text-center"
 								} relative text-lg sm:text-sm md:text-base tracking-wider hover:underline-offset-4 hover:underline hover:decoration-[rgb(22,2,152)]`}>
 								{list.nav}
 							</motion.li>
 						</Link>
 					))}
-					<li className="block sm:hidden">
+					<motion.li
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						transition={{ duration: 0.8 }}
+						className={`${window.scrollY >= 50 ? "block" : "hidden"}`}>
 						<div className="relative inline-flex group">
 							<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
 							<div
@@ -99,12 +94,12 @@ const Header = (props: Props) => {
 								Hire us
 							</div>
 						</div>
-					</li>
-				</ul>
+					</motion.li>
+				</motion.ul>
 			</motion.nav>
 
 			<div className="flex gap-4">
-				<div className="relative hidden sm:inline-flex group">
+				<div className="relative hidden sm:inline-flex group lg:mr-12">
 					<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
 					<div
 						onClick={() => scrollContacts()}
