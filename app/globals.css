@@ -43,8 +43,10 @@ body {
 	flex-wrap: nowrap;
 	animation: scroll-right 10s linear infinite;
 }
+
 .card-animate {
 	animation: onclick-display 1s linear 1;
+
 }
 
 .gradients {
@@ -100,31 +102,38 @@ body {
 	transform: translate3d(0px, 252px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
 	opacity: 0;
 	transform-style: preserve-3d;
-	transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out; /* Add transitions for transform and opacity */
-  }
-  
-  /* Hover state for .hover-trigger */
-  .hover-trigger:hover .hover-state-indicator {
-	transform: translate3d(0px, 30px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); /* Move it upwards */
-	opacity: 1; /* Increase opacity to 1 */
-  }
-  
-  /* .hover-line styles (no changes here) */
-  .hover-line {
+	transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+	/* Add transitions for transform and opacity */
+}
+
+/* Hover state for .hover-trigger */
+.hover-trigger:hover .hover-state-indicator {
+	transform: translate3d(0px, 30px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+	/* Move it upwards */
+	opacity: 1;
+	/* Increase opacity to 1 */
+}
+
+/* .hover-line styles (no changes here) */
+.hover-line {
 	z-index: 10;
 	width: 1px;
 	height: 4rem;
 	background-image: linear-gradient(transparent, rgba(159, 118, 255, .7) 26%, #745cff 46%, rgba(159, 118, 255, .7) 66%, transparent);
 	position: absolute;
-  }
-  
-.bg-image{
+}
+
+.bg-image {
 	background-color: #f4f1eb;
 	background-image: url("https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/64935d55c6acb4b535de4ca5_grain.webp");
 	background-position: 50%;
-    background-repeat: repeat;
-    background-size: contain;
-    background-attachment: fixed;
+	background-repeat: repeat;
+	background-size: contain;
+	background-attachment: fixed;
+}
+
+.bg-blur {
+	background-color: rgba(5, 5, 46, .25);
 }
 
 /* @keyframes scroll {

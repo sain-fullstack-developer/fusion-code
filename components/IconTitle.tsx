@@ -8,6 +8,7 @@ type Props = {
 	text?: string;
 	modern?: Boolean;
 	underline?: Boolean;
+	textColor?: Boolean;
 	id?: number;
 	logoInitial?: {};
 	logoWhileInView?: {};
@@ -19,6 +20,7 @@ const IconTitle = (props: Props) => {
 		logo,
 		title,
 		modern,
+		textColor,
 		text,
 		underline,
 		id,
@@ -41,7 +43,7 @@ const IconTitle = (props: Props) => {
 					alt="icons"
 				/>
 			</motion.div>
-			<h2 className={`${text ? "text-white" : "text-white"} text-2xl`}>
+			<h2 className={`${textColor ? "bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text" : "text-white"} text-2xl`}>
 				{title}
 			</h2>
 			{underline && <hr className="h-[3px] bg-btnBg w-[200px] m-auto mb-10" />}

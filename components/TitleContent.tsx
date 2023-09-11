@@ -86,7 +86,7 @@ const TitleContent = (props: Props) => {
 								height={iconHeight}
 								color={iconColor}
 							/>
-							<p className="ml-2 text-sm font-medium caption-text">{caption}</p>
+							<p className="ml-2 text-lg font-medium caption-text">{caption}</p>
 						</div>
 					)}
 					<h2

@@ -77,14 +77,6 @@ export const platformData = [
 		logo: "/hybrid.svg",
 		title: "Hybrid",
 	},
-	{
-		logo: "/wear.svg",
-		title: "Wearables",
-	},
-	{
-		logo: "/tv.svg",
-		title: "TV",
-	},
 ];
 export const teamsData = [
 	{

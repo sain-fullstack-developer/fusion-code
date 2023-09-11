@@ -45,12 +45,14 @@ const Home = () => {
 	const [servicesData, setServicesData] = useState(0);
 	const [faqDataState, setFaqDataState] = useState(0);
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [isSecondDivVisible, setIsSecondDivVisible] = useState(true);
+	const [dataLoaded, setDataLoaded] = useState(false);
 	const [hue, setHue] = useState(0);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
-	const scrollContactRef:any = useRef(null);
+	const scrollContactRef: any = useRef(null);
 	const servicesRef = useRef(null);
-	const faqCardRef:any = useRef(null);
+	const faqCardRef: any = useRef(null);
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -75,7 +77,7 @@ const Home = () => {
 	}, []);
 
 	useEffect(() => {
-		const interval = setInterval(generateRandomHue, 1000);
+		const interval = setInterval(generateRandomHue, 5000);
 		return () => clearInterval(interval);
 	}, []);
 
@@ -89,12 +91,25 @@ const Home = () => {
 	const handleFaqClick = (index: number) => {
 		setFaqNavOn(index);
 		setFaqDataState(index);
-		faqCardRef?.current?.classList?.add("card-animate");
+		setIsSecondDivVisible(false);
+		setTimeout(() => {
+			setIsSecondDivVisible(true);
+		}, 300);
 	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			setDataLoaded(true);
+		}, 1000);
+	}, []);
 
 	const handleServiceNav = (index: number) => {
 		setServiceNav(index);
 		setServicesData(index);
+		setIsSecondDivVisible(false);
+		setTimeout(() => {
+			setIsSecondDivVisible(true);
+		}, 300);
 	};
 
 	const NextArrowFunc = (props: any) => {
@@ -321,11 +336,11 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="bg-image w-full relative p-20 min-h-screen">
+							<div className="bg-image w-full relative lg:p-40 py-12 px-4 min-h-screen">
 								<div className="text-center w-full max-w-[54rem] m-auto pb-20 lg:pb-32">
 									<div className="flex pb-6 justify-center">
 										<TitleIcon width={24} height={24} color="blue" />
-										<p className="ml-2 text-base font-semibold caption-text">
+										<p className="ml-2 text-lg font-semibold caption-text">
 											What we do
 										</p>
 									</div>
@@ -333,9 +348,9 @@ const Home = () => {
 										Choose all the service &nbsp;
 										<span
 											style={{
-												backgroundColor: `hsla(${hue}, 100%, 50%, 0.2)`,
+												backgroundColor: `hsla(${hue}, 100%, 50%, 0.1)`,
 											}}
-											className="bg-textBg py-2 border-2 border-r-blue-600 border-l-blue-600">
+											className="bg-textBg duration-1000 ease-in-out py-2 border-2 border-r-blue-600 border-l-blue-600">
 											<span>blocks</span>
 										</span>
 										<br />
@@ -348,25 +363,25 @@ const Home = () => {
 										suite.
 									</p>
 								</div>
-								<div className="hidden lg:block lg:sticky lg:top-52">
+
+								<div className="hidden lg:block lg:sticky lg:top-52 w-fit">
 									{serviceNavs.map((service, index) => {
 										return (
 											<h2
 												onClick={() => handleServiceNav(index)}
 												key={index}
-												className={`${
-													index === serviceNav
-														? "gradients opacity-100"
-														: index !== serviceNav
+												className={`${index === serviceNav
+													? "bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text"
+													: index !== serviceNav
 														? "opacity-50"
 														: ""
-												} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8`}>
+													} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 `}>
 												{service}
 											</h2>
 										);
 									})}
 								</div>
-								<div className="grid md:place-items-center md:grid-cols-1 lg:grid-cols-custom gap-4 md:gap-8 lg:-mt-72">
+								<div className="grid md:place-items-center md:grid-cols-1 lg:grid-cols-custom gap-4 md:gap-8 lg:-mt-80">
 									<div>
 										<div className="text-center lg:hidden">
 											{serviceNavs.map((service, index) => {
@@ -374,34 +389,40 @@ const Home = () => {
 													<h2
 														onClick={() => handleServiceNav(index)}
 														key={index}
-														className={`${
-															index === serviceNav
-																? "gradients opacity-100"
-																: index !== serviceNav
+														className={`${index === serviceNav
+															? "gradients opacity-100"
+															: index !== serviceNav
 																? "opacity-50"
 																: ""
-														}
-														cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-50`}>
+															}
+														cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-100`}>
 														{service}
 													</h2>
 												);
 											})}
 										</div>
 									</div>
-
-									<div ref={servicesRef}>
-										{servicesCardData[servicesData].name.map((card, i) => {
-											return (
-												<ServicesCard
-													key={i}
-													title={card?.title}
-													caption={card?.caption}
-													text={card?.text}
-												/>
-											);
-										})}
-									</div>
+									{dataLoaded && (
+										<div ref={servicesRef}>
+											<div
+												className={`${isSecondDivVisible ? "opacity-100" : "opacity-0"
+													} transition-opacity duration-500 ease-in-out z-40 relative pt-20`}
+											>
+												{servicesCardData[servicesData].name.map((card, i) => {
+													return (
+														<ServicesCard
+															key={i}
+															title={card?.title}
+															caption={card?.caption}
+															text={card?.text}
+														/>
+													);
+												})}
+											</div>
+										</div>
+									)}
 								</div>
+
 							</div>
 
 							<div className="py-6 px-4  sm:py-8 lg:py-20 text-center border-t-[1px] border-card">
@@ -632,43 +653,39 @@ const Home = () => {
 									/>
 								</div>
 								<div className="max-w-3xl m-auto">
-									<div className="z-40 relative flex justify-center overflow-hidden no-scrollbar">
-										<ul className="w-screen justify-items-start self-auto ml-[-5vw] pl-[5vw] pr-[5vw] flex overflow-auto gap-10">
+									<div className="z-40 relative flex justify-center overflow-hidden">
+										<ul className="w-11/12 justify-items-start self-auto flex overflow-auto gap-10">
 											{faqNavList?.map((faq, index) => {
 												return (
 													<li
 														onClick={() => handleFaqClick(index)}
-														className={`${
-															index === faqNavOn &&
-															"trasition-all border-[1px] border-card rounded-lg gradients px-2 sm:px-4 py-1"
-														} text-base sm:text-lg text-white cursor-pointer w-full whitespace-nowrap text-center`}
-														key={index}>
+														className={`${index === faqNavOn &&
+															"transition-all border-[1px] border-[#3B3B40] rounded-lg gradients px-2 sm:px-4 py-1"
+															} text-base sm:text-lg font-semibold text-white cursor-pointer w-full whitespace-nowrap text-center`}
+														key={index}
+													>
 														{faq}
 													</li>
 												);
 											})}
 										</ul>
 									</div>
-									<motion.div
-										initial={{ opacity: 0 }}
-										whileInView={{ opacity: 1 }}
-										transition={{ duration: 0.6 }}
-										className="z-40 relative pt-20">
-										{faqCardData[faqDataState]?.name?.map((faq, index) => {
-											return (
-												<li
-													className={`${index === faqNavOn &&
-														"border-[1px] border-card rounded-lg gradients px-4 py-1"
-														} text-lg text-white/80 cursor-pointer`}
-													key={index}>
+									{dataLoaded && (
+										<div
+											className={`${isSecondDivVisible ? "opacity-100" : "opacity-0"
+												} transition-opacity duration-300 ease-in-out z-40 relative pt-20`}
+										>
+											{faqCardData[faqDataState]?.name?.map((faq, index) => {
+												return (
 													<FaqCard
+														key={index}
 														question={faq.question}
 														answer={faq.answer}
 													/>
-												</li>
-											);
-										})}
-									</motion.div>
+												);
+											})}
+										</div>
+									)}
 								</div>
 								<div className="py-10 z-40 relative md:py-20 w-full flex justify-center text-center">
 									<div>
@@ -687,7 +704,7 @@ const Home = () => {
 
 							<div className="min-h-screen text-center z-40 relative p-6 sm:p-0 bg-primary">
 								<TitleContent
-									headingClass="text-white text-4xl sm:text-6xl"
+									headingClass="bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"
 									title="Software for modern platforms"
 									text="We develop applications for mobile, web, wearables, and TV."
@@ -695,10 +712,11 @@ const Home = () => {
 									whileInView={{ y: 0, opacity: 1 }}
 									transition={{ type: "spring", stiffness: 30 }}
 								/>
-								<div className="grid gap-6 p-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-6 mb-20">
+								<div className="grid gap-6 p-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 mb-20">
 									{platformData.map((card, index) => {
 										return (
 											<IconTitle
+												textColor={true}
 												key={index}
 												id={index}
 												logo={card.logo}
@@ -714,11 +732,6 @@ const Home = () => {
 										);
 									})}
 								</div>
-								<Button
-									className="border-[1px] rounded-full py-4 px-8 border-borderBlue text-white hover:bg-btnBg hover:text-white"
-									type="button">
-									See our tech stack
-								</Button>
 							</div>
 
 							<div className="text-center pb-32 p-6 sm:p-0 bg-primary">
@@ -750,11 +763,6 @@ const Home = () => {
 										);
 									})}
 								</div>
-								<Button
-									className="border-[1px] rounded-full py-4 px-8 border-borderBlue text-white hover:bg-btnBg hover:text-white"
-									type="button">
-									See our services
-								</Button>
 							</div>
 						</motion.section>
 
