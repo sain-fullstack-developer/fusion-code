@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 type Props = {
 	scrollContacts: () => void;
@@ -50,6 +49,7 @@ const Header = (props: Props) => {
 				/>
 				Fusion <span className="font-normal">Code</span>
 			</div>
+
 			<motion.nav
 				id="navList"
 				className={`${
