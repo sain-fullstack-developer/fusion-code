@@ -47,7 +47,7 @@ const Header = (props: Props) => {
 			className={`${headerBg} ${
 				lightMode ? "bg-gray-100" : "bg-primary"
 			} sm:bg-transparent  flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 z-20 w-full`}>
-			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold">
+			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold relative z-20 ">
 				FC
 			</div>
 

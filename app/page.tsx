@@ -22,6 +22,15 @@ import ServicesCard from "@/components/ServicesCard";
 import GradientButton from "@/components/GradientButton";
 import WorkWithUsCard from "@/components/WorkWithUsCard";
 import ClientReviewCard from "@/components/ClientReviewCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+SwiperCore.use([Autoplay]);
+
 
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -98,8 +107,8 @@ const Home = () => {
 										data-loop="true"
 										data-wf-ignore="true"
 										data-beta-bgvideo-upgrade="false"
-										className="z-0 w-full h-full absolute grid place-items-center object-cover text-white">
-										<video loop muted id="video" autoPlay={true}>
+										className="z-0 w-full h-screen absolute grid place-items-center object-cover text-white">
+										<video loop muted id="video" autoPlay={true} className="h-full object-cover opacity-50">
 											<source
 												src="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.mp4"
 												data-wf-ignore="true"></source>
@@ -111,12 +120,13 @@ const Home = () => {
 									<motion.div
 										ref={targetRef}
 										className="p-6 sm:p-0 text-white text-center z-20 relative">
-										<motion.h1 className="font-roc text-5xl md:text-7xl lg:text-8xl mb-10">
+										<motion.h1 className="font-roc text-4xl md:text-7xl lg:text-9xl mb-10 font-medium">
 											<motion.div
 												initial={{ opacity: 0, y: -400 }}
 												animate={{ opacity: 1, y: 0 }}
-												transition={{ duration: 1, delay: 0.4 }}>
-												Fusing Innovation
+												transition={{ duration: 1, delay: 0.4 }}
+												className="flex items-center flex-col lg:flex-row mb-1" >
+												Fusing <div className="border-[3px] border-[#3a383e] rounded-full px-6 py-2 lg:px-8 lg:py-4 backdrop-blur-sm bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text custom-text-stroke">Innovation</div>
 											</motion.div>
 											<motion.div
 												initial={{ opacity: 0, y: 400 }}
@@ -126,7 +136,7 @@ const Home = () => {
 											</motion.div>
 										</motion.h1>
 									</motion.div>
-									<div className="bg-black/30 z-10 w-full h-full top-0 left-0 absolute"></div>
+									<div className=" z-10 w-full h-full top-0 left-0 absolute"></div>
 								</motion.div>
 							</div>
 						</section>
@@ -146,34 +156,68 @@ const Home = () => {
 								/>
 								<div className="overflow-hidden w-full pt-20">
 									<motion.div className="scroll-animate">
-										{cardData.map((card, index) => {
-											return (
-												<div className="flex-shrink-0 mr-20" key={index}>
-													<Image
-														src={card.logo}
-														width={180}
-														height={180}
-														alt={`client-${index}`}
-													/>
-												</div>
-											);
-										})}
+
+										<Swiper
+											autoplay={{
+												delay: 1000,
+												disableOnInteraction: false,
+												pauseOnMouseEnter: false,
+											}}
+											// speed={1200}
+											spaceBetween={50}
+											loop={true}
+											allowTouchMove={false}
+											breakpoints={{
+												320: {
+													slidesPerView: 1,
+												},
+												768: {
+													slidesPerView: 3,
+												},
+												1024: {
+													slidesPerView: 6,
+
+												},
+											}}
+											modules={[Autoplay]}
+											className="mySwiper"
+										>
+
+											{cardData.map((card, index) => {
+												return (
+													<SwiperSlide key={index}>
+														<div className="flex-shrink-0 " key={index}>
+															<Image
+																src={card.logo}
+																width={200}
+																height={200}
+																alt={`client-${index}`}
+																className="w-2/4 mx-auto lg:w-3/4"
+															/>
+														</div>
+													</SwiperSlide>
+												);
+											})}
+
+										</Swiper>
 									</motion.div>
 								</div>
 							</div>
 
-							<div className="p-4 sm:p-12 relative">
-								<div className="absolute bg-radial h-full w-full top-0"></div>
-								<div className="w-full ml-auto mr-auto p-[1px] rounded-lg bg-card relative">
-									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-16 text-[#0c0228] text-base z-10">
+							<div className="p-4 mb-28 sm:p-12 relative">
+								<div className="absolute bg-radial h-full top-0"></div>
+								<div className="lg:w-4/6 w-full ml-auto mr-auto p-[1px] rounded-lg hover-trigger relative">
+									<div className="hover-state-indicator hover-line"></div>
+									<div className="bg-black shadow-card border-[1px] border-[#3B3B40] rounded-2xl lg:p-20 p-4 text-[#0c0228] text-base z-10 ">
+
 										<div className="text-center">
-											<h2 className="gray-text text-4xl font-roc mb-6 font-medium">
+											<h2 className="gray-text text-2xl lg:text-3xl font-roc mb-4 lg:mb-6 font-medium">
 												No fluff, no long processes, no bloated teams...
 											</h2>
-											<h2 className="gray-secondary text-6xl font-roc font-medium mb-2">
+											<h2 className="text-stone-300 lg:text-gray-300 text-2xl lg:text-5xl font-roc font-medium mb-0 lg:mb-2 ">
 												Streamlined design and development.
 											</h2>
-											<h2 className="gray-secondary text-6xl font-roc font-medium">
+											<h2 className="text-stone-300 lg:text-gray-300 text-2xl lg:text-5xl font-roc font-medium">
 												Swift and remarkable results.
 											</h2>
 										</div>
@@ -181,7 +225,7 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="bg-[#f4f1eb] w-full relative p-20 min-h-screen">
+							<div className="bg-image w-full relative p-20 min-h-screen">
 								<div className="text-center w-full max-w-[54rem] m-auto pb-20 lg:pb-32">
 									<div className="flex pb-6 justify-center">
 										<Image
@@ -254,7 +298,7 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="py-6 sm:py-8 lg:py-20 text-center border-t-[1px] border-card">
+							<div className="py-6 px-4  sm:py-8 lg:py-20 text-center border-t-[1px] border-card">
 								<div className="flex pb-6 justify-center">
 									<Image
 										src=""
@@ -263,88 +307,91 @@ const Home = () => {
 										alt="icon"
 										className=""
 									/>
-									<p className="ml-2 text-sm font-medium caption-text">
+									<p className="ml-2 text-lg font-medium caption-text">
 										Who you’re working with
 									</p>
 								</div>
-								<div className="pt-2 pb-6 sm:pb-10 lg:pb-20">
-									<h2 className="gray-secondary text-6xl font-roc font-medium">
+								<div className="pt-2 pb-6 sm:pb-10 lg:pb-20 lg:text-6xl text-4xl">
+									<h2 className="gray-secondary font-roc font-medium">
 										A curated collective of
 									</h2>
-									<h2 className="gradients text-6xl font-roc font-medium">
+									<h2 className="gradients font-roc font-medium">
 										developers
 									</h2>
 								</div>
 
-								<div className="px-4 sm:px-20 lg:px-32">
-									<h3 className="gray-secondary text-6xl font-roc font-medium pb-6 md:pb-8">
+								<div className=" sm:px-20 lg:px-32">
+									<h3 className="gray-secondary lg:text-5xl text-3xl font-roc font-extrabold text-start pb-6 md:pb-8">
 										Exceptional work is the baseline, doing what we love is the
 										mission.
 									</h3>
-									<div className="border-[1px] rounded-xl p-4 border-card">
-										<div className="overflow-hidden w-full pb-2">
-											<div className="py-2 scroll-animate gap-4">
-												{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
-													return (
-														<div
-															key={index}
-															className="bg-border rounded-full w-full p-1">
-															<Button
-																type="button"
-																circle={true}
-																className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
-																noArrow={true}>
-																Brand Strategy
-															</Button>
-														</div>
-													);
-												})}
+									<div className="w-full hover-trigger">
+										<div className="hover-state-indicator hover-line"></div>
+										<div className="p-4 border-[1px] border-[#3B3B40] rounded-xl">
+											<div className="overflow-hidden w-full pb-2 ">
+												<div className="py-2 scroll-animate gap-4">
+													{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
+														return (
+															<div
+																key={index}
+																className="bg-border rounded-full w-full p-1">
+																<Button
+																	type="button"
+																	circle={true}
+																	className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
+																	noArrow={true}>
+																	Brand Strategy
+																</Button>
+															</div>
+														);
+													})}
+												</div>
 											</div>
-										</div>
-										<div className="overflow-hidden w-full pb-4">
-											<div className="py-2 scroll-animate-right gap-6">
-												{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
-													return (
-														<div
-															key={index}
-															className="bg-border rounded-full w-full p-1">
-															<Button
-																type="button"
-																circle={true}
-																className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
-																noArrow={true}>
-																Brand Strategy
-															</Button>
-														</div>
-													);
-												})}
+											<div className="overflow-hidden w-full pb-4">
+												<div className="py-2 scroll-animate-right gap-6">
+													{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
+														return (
+															<div
+																key={index}
+																className="bg-border rounded-full w-full p-1">
+																<Button
+																	type="button"
+																	circle={true}
+																	className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
+																	noArrow={true}>
+																	Brand Strategy
+																</Button>
+															</div>
+														);
+													})}
+												</div>
 											</div>
-										</div>
-										<div>
-											<h3 className="gray-secondary text-2xl font-semibold pb-4">
-												The right talent, in the right place, at the right time.
-											</h3>
-											<div className="gray-secondary text-lg pb-4">
-												Jords+Co are a remarkable and meticulously curated
-												remote team located in the UK, Europe and the US
-												comprising of experts in their respective domains.
-											</div>
-											<div className="gray-secondary text-lg pb-4">
-												Your dedicated team is carefully chosen for your
-												project, ensuring a perfect match for its unique
-												requirements.
-											</div>
-											<div className="gray-secondary text-lg pb-4">
-												Our approach of handpicking individuals with specialised
-												skills, aligned interests, and exceptional suitability
-												unlocks unparalleled outcomes
+											<div className="text-start lg:text-center">
+												<h3 className="text-stone-300 lg:text-gray-300 lg:text-4xl text-xl font-semibold pb-3 lg:pb-4">
+													The right talent, in the right place, at the right time.
+												</h3>
+												<div className=" text-base lg:text-xl font-medium pb-3 lg:pb-4 text-[#c2bad9]">
+													Jords+Co are a remarkable and meticulously curated
+													remote team located in the UK, Europe and the US
+													comprising of experts in their respective domains.
+												</div>
+												<div className=" text-base lg:text-xl font-medium pb-3 lg:pb-4 text-[#c2bad9]">
+													Your dedicated team is carefully chosen for your
+													project, ensuring a perfect match for its unique
+													requirements.
+												</div>
+												<div className=" text-base lg:text-xl font-medium pb-3 lg:pb-4 text-[#c2bad9]">
+													Our approach of handpicking individuals with specialised
+													skills, aligned interests, and exceptional suitability
+													unlocks unparalleled outcomes
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<div className="p-4 lg:p-20 grid md:grid-cols-custom2 gap-6">
+							<div className="lg:w-10/12 px-4 py-20 lg:p-40 grid md:grid-cols-custom2 gap-6 mx-auto">
 								<div className="">
 									<div className="grid pb-6 justify-center">
 										<Image
@@ -358,7 +405,7 @@ const Home = () => {
 											Values
 										</p>
 										<p className="text-4xl font-medium text-white pb-4 md:pb-10 font-roc">
-											Why work <br /> with us
+											Why work <br className="hidden lg:flex" /> with us
 										</p>
 										<div className="w-96 p-4">
 											<GradientButton>Contact Us</GradientButton>
@@ -479,10 +526,9 @@ const Home = () => {
 										{faqNavList?.map((faq, index) => {
 											return (
 												<li
-													className={`${
-														index === faqNavOn &&
+													className={`${index === faqNavOn &&
 														"border-[1px] border-card rounded-lg gradients px-4 py-1"
-													} text-lg text-white/80 cursor-pointer`}
+														} text-lg text-white/80 cursor-pointer`}
 													key={index}>
 													{faq}
 												</li>

@@ -11,6 +11,7 @@ body {
 	flex-wrap: nowrap;
 	animation: scroll 10s linear infinite;
 }
+
 .scroll-animate-right {
 	display: flex;
 	flex-wrap: nowrap;
@@ -23,18 +24,21 @@ body {
 	background-clip: text;
 	color: transparent;
 }
+
 .caption-text {
 	background: linear-gradient(45deg, #3b00ff, #c700ff);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 }
+
 .gray-text {
 	background: linear-gradient(#968abc, rgba(150, 138, 188, 0.3));
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 }
+
 .gray-secondary {
 	background: linear-gradient(#fff, rgba(255, 255, 255, 0.7));
 	-webkit-background-clip: text;
@@ -42,21 +46,81 @@ body {
 	color: transparent;
 }
 
+.custom-text-stroke {
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
+}
 
+.swiper {
+	width: 100%;
+	height: 100%;
+}
 
-@keyframes scroll {
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+
+	/* Center slide text vertically */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Initial state for .hover-state-indicator */
+.hover-state-indicator {
+	transform: translate3d(0px, 252px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+	opacity: 0;
+	transform-style: preserve-3d;
+	transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out; /* Add transitions for transform and opacity */
+  }
+  
+  /* Hover state for .hover-trigger */
+  .hover-trigger:hover .hover-state-indicator {
+	transform: translate3d(0px, 30px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); /* Move it upwards */
+	opacity: 1; /* Increase opacity to 1 */
+  }
+  
+  /* .hover-line styles (no changes here) */
+  .hover-line {
+	z-index: 10;
+	width: 1px;
+	height: 4rem;
+	background-image: linear-gradient(transparent, rgba(159, 118, 255, .7) 26%, #745cff 46%, rgba(159, 118, 255, .7) 66%, transparent);
+	position: absolute;
+  }
+  
+.bg-image{
+	background-color: #f4f1eb;
+	background-image: url("https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/64935d55c6acb4b535de4ca5_grain.webp");
+	background-position: 50%;
+    background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
+}
+
+/* @keyframes scroll {
 	0% {
 		transform: translateX(0);
 	}
+
 	100% {
 		transform: translateX(-100%);
 	}
-}
+} */
+
+
 @keyframes scroll-right {
 	0% {
 		transform: translateX(0);
 	}
+
 	100% {
 		transform: translateX(40%);
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.custom-text-stroke {
+		-webkit-text-stroke-width: 0.20px;
 	}
 }
