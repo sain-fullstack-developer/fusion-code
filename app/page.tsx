@@ -27,10 +27,13 @@ import WorkWithUsCard from "@/components/WorkWithUsCard";
 import ClientReviewCard from "@/components/ClientReviewCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
+import Slider from 'react-slick'
+import FaqCard from "@/components/FaqCard";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import TitleIcon from "@/elements/TitleIcon";
 
 SwiperCore.use([Autoplay]);
 
@@ -45,9 +48,9 @@ const Home = () => {
 	const [hue, setHue] = useState(0);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
-	const scrollContactRef = useRef(null);
+	const scrollContactRef:any = useRef(null);
 	const servicesRef = useRef(null);
-	const faqCardRef = useRef(null);
+	const faqCardRef:any = useRef(null);
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -662,7 +665,7 @@ const Home = () => {
 														question={faq.question}
 														answer={faq.answer}
 													/>
-												</div>
+												</li>
 											);
 										})}
 									</motion.div>
