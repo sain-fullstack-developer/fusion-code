@@ -37,6 +37,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+SwiperCore.use([Autoplay]);
+
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [faqNavOn, setFaqNavOn] = useState(0);
@@ -49,7 +58,7 @@ const Home = () => {
 	const [hue, setHue] = useState(0);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
-	const scrollContactRef:any = useRef(null);
+	const scrollContactRef: any = useRef(null);
 	const servicesRef = useRef(null);
 	const faqCardRef = useRef<any>(null);
 	const servicesBlockRef = useRef(null);
@@ -188,16 +197,15 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		if (currentIndex === curativeHeads.length - 1) {
-			console.log("stopping");
-			return;
-		}
-		const interval = setInterval(() => {
-			const updatedData = currentIndex + 1;
-			setCurrentIndex(updatedData);
-		}, 1000);
+		const timer = setTimeout(() => {
+			if (currentIndex < curativeHeads.length - 1) {
+				setCurrentIndex(currentIndex + 1);
+			} else {
+				setCurrentIndex(0);
+			}
+		}, 2000);
 
-		return () => clearInterval(interval);
+		return () => clearTimeout(timer);
 	}, [currentIndex]);
 
 	const servicesParentVariant: Variants = {
@@ -342,19 +350,43 @@ const Home = () => {
 									iconClass="justify-center"
 								/>
 								<div className="overflow-hidden w-full pt-20">
-									<motion.div className="scroll-animate">
-										{cardData.map((card, index) => {
-											return (
-												<div className="flex-shrink-0 mr-20" key={index}>
-													<Image
-														src={card.logo}
-														width={180}
-														height={180}
-														alt={`client-${index}`}
-													/>
-												</div>
-											);
-										})}
+									<motion.div className="flex px-6 sm:px-12">
+										<Swiper
+											autoplay={{
+												disableOnInteraction: false,
+												pauseOnMouseEnter: false,
+												delay: 0,
+											}}
+											speed={3000}
+											spaceBetween={50}
+											loop={true}
+											allowTouchMove={false}
+											breakpoints={{
+												320: {
+													slidesPerView: 2,
+												},
+												768: {
+													slidesPerView: 3,
+												},
+												1024: {
+													slidesPerView: 6,
+												},
+											}}
+											modules={[Autoplay]}
+											className="mySwiper">
+											{cardData.map((card, index) => {
+												return (
+													<SwiperSlide key={index}>
+														<Image
+															src={card.logo}
+															width={140}
+															height={140}
+															alt={`client-${index}`}
+														/>
+													</SwiperSlide>
+												);
+											})}
+										</Swiper>
 									</motion.div>
 								</div>
 							</div>
@@ -405,7 +437,9 @@ const Home = () => {
 											<motion.span
 												variants={servicesChildVariant}
 												initial="hidden"
-												whileInView="visible">blocks</motion.span>
+												whileInView="visible">
+												blocks
+											</motion.span>
 										</motion.span>
 										<br />
 										or just the ones you need...
@@ -424,12 +458,13 @@ const Home = () => {
 											<h2
 												onClick={() => handleServiceNav(index)}
 												key={index}
-												className={`${index === serviceNav
-													? "bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text"
-													: index !== serviceNav
+												className={`${
+													index === serviceNav
+														? "bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text"
+														: index !== serviceNav
 														? "opacity-50"
 														: ""
-													} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 `}>
+												} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 `}>
 												{service}
 											</h2>
 										);
@@ -443,12 +478,13 @@ const Home = () => {
 													<h2
 														onClick={() => handleServiceNav(index)}
 														key={index}
-														className={`${index === serviceNav
-															? "gradients opacity-100"
-															: index !== serviceNav
+														className={`${
+															index === serviceNav
+																? "gradients opacity-100"
+																: index !== serviceNav
 																? "opacity-50"
 																: ""
-															}
+														}
 														cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-100`}>
 														{service}
 													</h2>
@@ -460,9 +496,9 @@ const Home = () => {
 									{dataLoaded && (
 										<div ref={servicesRef}>
 											<div
-												className={`${isSecondDivVisible ? "opacity-100" : "opacity-0"
-													} transition-opacity duration-500 ease-in-out z-40 relative pt-20`}
-											>
+												className={`${
+													isSecondDivVisible ? "opacity-100" : "opacity-0"
+												} transition-opacity duration-500 ease-in-out z-40 relative pt-20`}>
 												{servicesCardData[servicesData].name.map((card, i) => {
 													return (
 														<ServicesCard
@@ -477,9 +513,10 @@ const Home = () => {
 										</div>
 									)}
 								</div>
-							</div>
+							</motion.div>
 
-							<div className="px-4 sm:px-0 py-20 text-center border-t-[1px] border-card">
+							<div className="px-4 sm:px-0 py-20 text-center border-t-[1px] border-card relative z-10">
+								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
 								<div className="flex pb-6 justify-center">
 									<TitleIcon width={24} height={24} color="blue" />
 									<p className="ml-2 text-lg font-medium caption-text">
@@ -490,9 +527,9 @@ const Home = () => {
 									<h2 className="gray-secondary text-4xl md:text-6xl font-roc font-medium">
 										A curated collective of
 									</h2>
-									<h2 className="gradients text-4xl md:text-6xl font-roc font-medium">
+									<motion.h2 className="gradients text-4xl md:text-6xl font-roc font-medium animate-curative-text">
 										{curativeHeads[currentIndex]}
-									</h2>
+									</motion.h2>
 								</div>
 
 								<div className="px-4 sm:px-20 lg:px-32">
@@ -563,7 +600,8 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="min-h-screen bg-black py-10 lg:p-20 grid md:grid-cols-custom gap-6">
+							<div className="min-h-screen bg-black py-10 lg:p-20 grid md:grid-cols-custom gap-6 relative z-10">
+								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
 								<div className="m-4">
 									<TitleContent
 										GradientTitle={true}
@@ -699,39 +737,40 @@ const Home = () => {
 												return (
 													<li
 														onClick={() => handleFaqClick(index)}
-														className={`${index === faqNavOn &&
+														className={`${
+															index === faqNavOn &&
 															"transition-all border-[1px] border-[#3B3B40] rounded-lg gradients px-2 sm:px-4 py-1"
-															} text-base sm:text-lg font-semibold text-white cursor-pointer w-full whitespace-nowrap text-center`}
-														key={index}
-													>
+														} text-base sm:text-lg font-semibold text-white cursor-pointer w-full whitespace-nowrap text-center`}
+														key={index}>
 														{faq}
 													</li>
 												);
 											})}
 										</ul>
 									</div>
-									{dataLoaded && (	<motion.div
-										initial={{ opacity: 0 }}
-										whileInView={{ opacity: 1 }}
-										transition={{ duration: 0.6 }}
-										className={`${isSecondDivVisible ? "opacity-100" : "opacity-0"
-									} transition-opacity duration-300 ease-in-out z-40 relative pt-20`}>
-										{faqCardData[faqDataState]?.name?.map((faq, index) => {
-											return (
-												<li
-													className={`${index === faqNavOn &&
-														"border-[1px] border-card rounded-lg gradients px-4 py-1"
-														} text-lg text-white/80 cursor-pointer`}
-													key={index}>
-													<FaqCard
-														key={index}
-														question={faq.question}
-														answer={faq.answer}
-													/>
-												</li>
-											);
-										})}
-									</motion.div> )}
+									{dataLoaded && (
+										<motion.ul
+											initial={{ opacity: 0 }}
+											whileInView={{ opacity: 1 }}
+											transition={{ duration: 0.6 }}
+											className={`${
+												isSecondDivVisible ? "opacity-100" : "opacity-0"
+											} transition-opacity duration-300 ease-in-out z-40 relative pt-20 list-none`}>
+											{faqCardData[faqDataState]?.name?.map((faq, index) => {
+												return (
+													<motion.li
+														className={`text-lg text-white/80 cursor-pointer`}
+														key={index}>
+														<FaqCard
+															key={index}
+															question={faq.question}
+															answer={faq.answer}
+														/>
+													</motion.li>
+												);
+											})}
+										</motion.ul>
+									)}
 								</div>
 								<div className="py-10 z-40 relative md:py-20 w-full flex justify-center text-center">
 									<div>
@@ -749,6 +788,7 @@ const Home = () => {
 							</div>
 
 							<div className="min-h-screen text-center z-40 relative p-6 sm:p-0 bg-primary">
+								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
 								<TitleContent
 									headingClass="bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"
@@ -820,6 +860,7 @@ const Home = () => {
 										</defs>
 									</svg>
 								</div>
+
 								<TitleContent
 									headingClass="text-white text-4xl sm:text-6xl mb-6"
 									textClass="text-xl text-white/60 mb-20"
@@ -831,7 +872,7 @@ const Home = () => {
 									transition={{ type: "spring", stiffness: 30 }}
 								/>
 
-								<div className="grid gap-6 gap-y-28 p-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 mb-16">
+								<div className="grid gap-6 gap-y-28 p-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 mb-16 relative z-30">
 									{teamsData.map((card, index) => {
 										return (
 											<IconTitle

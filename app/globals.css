@@ -35,7 +35,7 @@ body {
 .scroll-animate {
 	display: flex;
 	flex-wrap: nowrap;
-	animation: scroll 10s linear infinite;
+	animation: scroll 14s linear infinite;
 }
 
 .scroll-animate-right {
@@ -46,7 +46,6 @@ body {
 
 .card-animate {
 	animation: onclick-display 1s linear 1;
-
 }
 
 .gradients {
@@ -55,7 +54,9 @@ body {
 	background-clip: text;
 	color: transparent;
 }
-
+.animate-curative-text {
+	animation: animate-curative 4s linear infinite;
+}
 .caption-text {
 	background: linear-gradient(45deg, #3b00ff, #c700ff);
 	-webkit-background-clip: text;
@@ -99,7 +100,8 @@ body {
 
 /* Initial state for .hover-state-indicator */
 .hover-state-indicator {
-	transform: translate3d(0px, 252px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+	transform: translate3d(0px, 252px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+		rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
 	opacity: 0;
 	transform-style: preserve-3d;
 	transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
@@ -108,7 +110,8 @@ body {
 
 /* Hover state for .hover-trigger */
 .hover-trigger:hover .hover-state-indicator {
-	transform: translate3d(0px, 30px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+	transform: translate3d(0px, 30px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+		rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
 	/* Move it upwards */
 	opacity: 1;
 	/* Increase opacity to 1 */
@@ -119,7 +122,13 @@ body {
 	z-index: 10;
 	width: 1px;
 	height: 4rem;
-	background-image: linear-gradient(transparent, rgba(159, 118, 255, .7) 26%, #745cff 46%, rgba(159, 118, 255, .7) 66%, transparent);
+	background-image: linear-gradient(
+		transparent,
+		rgba(159, 118, 255, 0.7) 26%,
+		#745cff 46%,
+		rgba(159, 118, 255, 0.7) 66%,
+		transparent
+	);
 	position: absolute;
 }
 
@@ -133,10 +142,10 @@ body {
 }
 
 .bg-blur {
-	background-color: rgba(5, 5, 46, .25);
+	background-color: rgba(5, 5, 46, 0.25);
 }
 
-/* @keyframes scroll {
+@keyframes scroll {
 	0% {
 		transform: translateX(0);
 	}
@@ -144,8 +153,17 @@ body {
 	100% {
 		transform: translateX(-100%);
 	}
-} */
+}
 
+@keyframes animate-curative {
+	0% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(10px);
+	}
+}
 
 @keyframes scroll-right {
 	0% {
@@ -159,6 +177,6 @@ body {
 
 @media only screen and (max-width: 768px) {
 	.custom-text-stroke {
-		-webkit-text-stroke-width: 0.20px;
+		-webkit-text-stroke-width: 0.2px;
 	}
 }

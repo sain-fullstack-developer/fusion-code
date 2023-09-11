@@ -13,15 +13,12 @@ const ContactForm = (props: Props) => {
 				<p className="ml-2 text-xl  caption-text">Start a project</p>
 			</div>
 			<h3 className="pb-10 text-4xl text-white sm:pb-20 sm:text-6xl font-roc">
-				Let&apos;s talk about you
+				Lets talk about you
 			</h3>
 			<div className="grid sm:grid-cols-custom gap-y-6 sm:gap-6">
 				<div className="  h-fit hover-trigger">
 					<div className="hover-state-indicator hover-line"></div>
 					<div className="border-[1px] border-[#3B3B40] rounded-2xl p-4 lg:p-10 bg-[rgba(0,0,20,.92)]">
-						<div className="bg-black border-2 border-[#0e1327] rounded-full w-24 h-24 lg:mb-4">
-							<Image src="" width={100} height={100} alt="icon" className="" />
-						</div>
 						<div className="pb-4 text-2xl font-roc">
 							<span className="caption-text">Free</span> 30min consultation
 						</div>

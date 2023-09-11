@@ -1,7 +1,9 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 type Props = {
 	scrollContacts: () => void;
@@ -10,11 +12,17 @@ type Props = {
 
 const Header = (props: Props) => {
 	const { scrollContacts, scrollBg } = props;
-	const [scrollNavs, setScrollNavs] = useState<Boolean>(false);
 	const [lightMode, setLightMode] = useState(false);
+	const [navScrollAdd, setNavScrollAdd] = useState(false);
+
 	const [menuOn, setMenuOn] = useState(false);
 
 	const path = usePathname();
+	const { scrollY } = useScroll();
+
+	useMotionValueEvent(scrollY, "change", (latest) => {
+		latest >= 50 ? setNavScrollAdd(true) : setNavScrollAdd(false);
+	});
 
 	useEffect(() => {
 		if (path === "/works" || path === "/services") {
@@ -73,10 +81,14 @@ const Header = (props: Props) => {
 								transition={{ duration: 0.6 }}
 								className={`${
 									list.path === path &&
-									"underline underline-offset-4 decoration-[rgb(22,2,152)]"
+									`underline underline-offset-4 decoration-[rgb(22,2,152)] ${
+										list.path === path &&
+										list.path !== "/" &&
+										"bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text"
+									}`
 								} ${
 									menuOn && "text-white/60 pb-4 text-lg text-center"
-								} relative text-lg sm:text-sm md:text-base tracking-wider hover:underline-offset-4 hover:underline hover:decoration-[rgb(22,2,152)]`}>
+								} relative  text-lg sm:text-sm md:text-base tracking-wider hover:underline-offset-4 hover:underline hover:decoration-[rgb(22,2,152)]`}>
 								{list.nav}
 							</motion.li>
 						</Link>
@@ -84,8 +96,8 @@ const Header = (props: Props) => {
 					<motion.li
 						initial={{ opacity: 0 }}
 						whileInView={{ opacity: 1 }}
-						transition={{ duration: 0.8 }}
-						className={`${window.scrollY >= 50 ? "block" : "hidden"}`}>
+						transition={{ duration: 0.4 }}
+						className={`${navScrollAdd ? "block" : "hidden"}`}>
 						<div className="relative inline-flex group">
 							<div className="absolute transitiona-all duration-1000 opacity-90 -inset-2 bg-btnBg rounded-xl blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
 							<div
