@@ -16,7 +16,13 @@ import {
 	teamsData,
 } from "@/data";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+	motion,
+	Variants,
+	useScroll,
+	useTransform,
+	useInView,
+} from "framer-motion";
 import InitialPage from "@/components/Loading";
 import TitleContent from "@/components/TitleContent";
 import Image from "next/image";
@@ -41,9 +47,16 @@ const Home = () => {
 	const [hue, setHue] = useState(0);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
-	const scrollContactRef = useRef(null);
+	const scrollContactRef = useRef<any>(null);
 	const servicesRef = useRef(null);
-	const faqCardRef = useRef(null);
+	const faqCardRef = useRef<any>(null);
+	const servicesBlockRef = useRef(null);
+	const workWithBlockRef = useRef(null);
+	const clientBlockRef = useRef(null);
+
+	const serviceSectionView = useInView(servicesBlockRef);
+	const workWithSectionView = useInView(servicesBlockRef);
+	const clientReviewSectionView = useInView(clientBlockRef);
 
 	const { scrollYProgress: scrollYProgressIncludingOverlap } = useScroll({
 		target: extendedRef,
@@ -171,13 +184,43 @@ const Home = () => {
 
 		return () => clearInterval(interval);
 	}, [currentIndex]);
+
+	const servicesParentVariant: Variants = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				when: "beforeChildren",
+			},
+		},
+	};
+	const servicesChildVariant: Variants = {
+		hidden: {
+			y: 100,
+		},
+		visible: {
+			y: 0,
+		},
+	};
+
 	return (
 		<>
 			{isLoading && <InitialPage />}
 			{!isLoading && (
 				<>
 					<div className="z-50">
-						<Header scrollContacts={onScrollToContactsEl} />
+						<Header
+							scrollBg={
+								serviceSectionView ||
+								workWithSectionView ||
+								clientReviewSectionView
+									? true
+									: false
+							}
+							scrollContacts={onScrollToContactsEl}
+						/>
 					</div>
 					<motion.main
 						initial={{ opacity: 0 }}
@@ -230,17 +273,58 @@ const Home = () => {
 						</section>
 
 						<motion.section className={`z-20 relative pb-40 bg-primary`}>
+							<div className="z-0 w-full object-cover justify-center align-center flex absolute transform opacity-40">
+								<svg
+									width="1200"
+									height="297"
+									viewBox="0 0 1200 297"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<g opacity="0.4" filter="url(#filter0_f_553_3892)">
+										<ellipse
+											cx="600"
+											cy="148.073"
+											rx="488"
+											ry="36"
+											fill="#3B00FF"></ellipse>
+									</g>
+									<defs>
+										<filter
+											id="filter0_f_553_3892"
+											x="0"
+											y="0.0732422"
+											width="1200"
+											height="296"
+											filterUnits="userSpaceOnUse"
+											color-interpolation-filters="sRGB">
+											<feFlood
+												flood-opacity="0"
+												result="BackgroundImageFix"></feFlood>
+											<feBlend
+												mode="normal"
+												in="SourceGraphic"
+												in2="BackgroundImageFix"
+												result="shape"></feBlend>
+											<feGaussianBlur
+												stdDeviation="56"
+												result="effect1_foregroundBlur_553_3892"></feGaussianBlur>
+										</filter>
+									</defs>
+								</svg>
+							</div>
 							<div className="pt-20 pb-10 text-center mb-12 bg-primary">
 								<TitleContent
+									GradientTitle={true}
+									caption="Trusted by"
 									headingClass="text-white text-3xl sm:text-6xl"
 									textClass="text-white/60 text-text"
 									title="Recent clients"
-									text="We worked with the Fortune 500 companies in the USA, Africa,
-										UK, Middle East World's 4th Strongest Banking Brand,
-										Automobile & IoT industry"
 									initial={{ y: 100, opacity: 0 }}
 									whileInView={{ y: 0, opacity: 1 }}
 									transition={{ type: "spring", stiffness: 30 }}
+									iconWidth={24}
+									iconHeight={24}
+									iconClass="justify-center"
 								/>
 								<div className="overflow-hidden w-full pt-20">
 									<motion.div className="scroll-animate">
@@ -260,7 +344,11 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="p-4 sm:p-12 my-10 sm:my-20 relative">
+							<motion.div
+								initial={{ y: 100, opacity: 0 }}
+								whileInView={{ y: 0, opacity: 1 }}
+								transition={{ type: "spring", stiffness: 30 }}
+								className="p-4 sm:p-12 my-10 sm:my-20 relative">
 								<div className="absolute bg-radial h-full w-1/2 sm:w-full transform top-0"></div>
 								<div className="w-full p-[1px] rounded-lg bg-card relative">
 									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-16 text-content text-base z-10">
@@ -277,9 +365,14 @@ const Home = () => {
 										</div>
 									</div>
 								</div>
-							</div>
+							</motion.div>
 
-							<div className="bg-[#f4f1eb] w-full relative p-6 lg:px-20 lg:py-32 min-h-screen">
+							<motion.div
+								ref={servicesBlockRef}
+								variants={servicesParentVariant}
+								initial="hidden"
+								animate="visible"
+								className="bg-[#f4f1eb] w-full relative p-6 lg:px-20 lg:py-32 min-h-screen">
 								<div className="text-center w-full max-w-[54rem] m-auto pb-20 lg:pb-32">
 									<div className="flex pb-6 justify-center">
 										<TitleIcon width={24} height={24} color="blue" />
@@ -287,18 +380,23 @@ const Home = () => {
 											What we do
 										</p>
 									</div>
-									<h2 className="font-roc text-4xl text-[#0c0228] sm:text-5xl md:text-[3.5rem] md:leading-tight font-medium text-content pb-4 md:pb-8">
+									<motion.h2 className="font-roc text-4xl text-[#0c0228] sm:text-5xl md:text-[3.5rem] md:leading-tight font-medium text-content pb-4 md:pb-8">
 										Choose all the service &nbsp;
-										<span
+										<motion.span
 											style={{
 												backgroundColor: `hsla(${hue}, 100%, 50%, 0.2)`,
 											}}
 											className="bg-textBg py-2 border-2 border-r-blue-600 border-l-blue-600">
-											<span>blocks</span>
-										</span>
+											<motion.span
+												variants={servicesChildVariant}
+												initial="hidden"
+												whileInView="visible">
+												blocks
+											</motion.span>
+										</motion.span>
 										<br />
 										or just the ones you need...
-									</h2>
+									</motion.h2>
 									<p className="text-base sm:text-lg">
 										Tailored services <strong>without the agency fluff:</strong>
 										discovery, strategy, branding, website and product design,
@@ -360,7 +458,7 @@ const Home = () => {
 										})}
 									</div>
 								</div>
-							</div>
+							</motion.div>
 
 							<div className="px-4 sm:px-0 py-20 text-center border-t-[1px] border-card">
 								<div className="flex pb-6 justify-center">
@@ -446,32 +544,29 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="min-h-screen bg-black py-10 lg:p-20 grid sm:place-items-center md:grid-cols-custom2 gap-6">
-								<div className="w-full place-items-center">
-									<div className="pb-6 w-full sm:text-center">
-										<div className="flex w-full justify-center">
-											<TitleIcon width={24} height={24} color="blue" />
-											<p className="text-lg font-medium caption-text pb-4 ml-2">
-												Values
-											</p>
-										</div>
-										<p className="text-4xl text-center font-medium text-white pb-4 md:pb-10 font-roc">
-											Why work <br /> with us
-										</p>
-										<div className="w-96 p-4 text-center">
-											<GradientButton>Contact Us</GradientButton>
-										</div>
-									</div>
+							<div className="min-h-screen bg-black py-10 lg:p-20 grid md:grid-cols-custom gap-6">
+								<div className="m-4">
+									<TitleContent
+										GradientTitle={true}
+										title="Why work with us"
+										iconHeight={24}
+										iconWidth={24}
+										caption="Values"
+										headingClass="text-white"
+									/>
+									<GradientButton>Contact us</GradientButton>
 								</div>
-								<div className="grid place-items-center sm:grid-cols-2 gap-4 md:gap-6">
+								<div className="grid place-items-center sm:place-items-stretch sm:grid-cols-2 gap-4 md:gap-6">
 									<WorkWithUsCard />
 									<WorkWithUsCard />
 									<WorkWithUsCard />
-									<WorkWithUsCard />
+									<WorkWithUsCard />d
 								</div>
 							</div>
 
-							<div className="p-10 lg:p-20 bg-[#f4f1eb] min-h-screen">
+							<div
+								className="p-10 lg:p-20 bg-[#f4f1eb] min-h-screen"
+								ref={workWithBlockRef}>
 								<div className="w-full lg:w-2/3 pb-6 lg:pb-20">
 									<TitleContent
 										GradientTitle={true}
@@ -531,7 +626,9 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="bg-[#f4f1eb] px-10 md:px-20 py-32 min-h-screen">
+							<div
+								ref={clientBlockRef}
+								className="bg-[#f4f1eb] px-10 md:px-20 py-32 min-h-screen">
 								<TitleContent
 									GradientTitle={true}
 									caption="What people say"
@@ -665,7 +762,46 @@ const Home = () => {
 								</Button>
 							</div>
 
-							<div className="text-center pb-32 p-6 sm:p-0 bg-primary">
+							<div className="text-center pb-32 p-6 sm:p-0 bg-primary relative">
+								<div className="z-0 w-full object-cover justify-center align-center flex absolute transform opacity-40 -top-10">
+									<svg
+										width="1200"
+										height="297"
+										viewBox="0 0 1200 297"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<g opacity="0.4" filter="url(#filter0_f_553_3892)">
+											<ellipse
+												cx="600"
+												cy="148.073"
+												rx="488"
+												ry="36"
+												fill="#3B00FF"></ellipse>
+										</g>
+										<defs>
+											<filter
+												id="filter0_f_553_3892"
+												x="0"
+												y="0.0732422"
+												width="1200"
+												height="296"
+												filterUnits="userSpaceOnUse"
+												color-interpolation-filters="sRGB">
+												<feFlood
+													flood-opacity="0"
+													result="BackgroundImageFix"></feFlood>
+												<feBlend
+													mode="normal"
+													in="SourceGraphic"
+													in2="BackgroundImageFix"
+													result="shape"></feBlend>
+												<feGaussianBlur
+													stdDeviation="56"
+													result="effect1_foregroundBlur_553_3892"></feGaussianBlur>
+											</filter>
+										</defs>
+									</svg>
+								</div>
 								<TitleContent
 									headingClass="text-white text-4xl sm:text-6xl mb-6"
 									textClass="text-xl text-white/60 mb-20"

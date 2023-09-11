@@ -46,7 +46,6 @@ const TitleContent = (props: Props) => {
 	} = props;
 	return (
 		<>
-			{" "}
 			{!GradientTitle && (
 				<motion.div
 					initial={initial}
@@ -86,7 +85,9 @@ const TitleContent = (props: Props) => {
 								height={iconHeight}
 								color={iconColor}
 							/>
-							<p className="ml-2 text-sm font-medium caption-text">{caption}</p>
+							<p className="ml-2 text-base font-medium caption-text">
+								{caption}
+							</p>
 						</div>
 					)}
 					<h2

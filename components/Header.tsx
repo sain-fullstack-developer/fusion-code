@@ -6,10 +6,11 @@ import Image from "next/image";
 
 type Props = {
 	scrollContacts: () => void;
+	scrollBg?: Boolean;
 };
 
 const Header = (props: Props) => {
-	const { scrollContacts } = props;
+	const { scrollContacts, scrollBg } = props;
 	const [headerBg, setHeaderBg] = useState("");
 	const [lightMode, setLightMode] = useState(false);
 	const [menuOn, setMenuOn] = useState(false);
@@ -46,8 +47,8 @@ const Header = (props: Props) => {
 			transition={{ duration: 0.6 }}
 			id="header"
 			className={`${headerBg} ${
-				lightMode ? "bg-gray-100" : "bg-primary"
-			} sm:bg-transparent  flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 left-0 z-50 w-full`}>
+				scrollBg ? "bg-black" : "bg-transparent"
+			} w-screen flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 md:px-6 lg:px-12 lg:py-3 sm:fixed top-0 left-0 z-50`}>
 			<div className="self-center sm:self-auto text-3xl text-white font-roc font-bold flex">
 				<Image
 					src="/logo.png"
@@ -62,7 +63,7 @@ const Header = (props: Props) => {
 				id="navList"
 				className={`${
 					menuOn
-						? "grid sm:place-items-center absolute left-5 sm:left-[14%] bg-black w-[90%] sm:w-fit h-full p-6 rounded-lg ring-1 ring-gray-100 top-20"
+						? "grid sm:place-items-center absolute left-5 sm:left-[14%] bg-black w-[90%] sm:w-fit p-6 rounded-lg ring-1 ring-gray-100 top-20"
 						: "hidden"
 				} lg:block z-40 mt-1 m-auto lg:m-0`}>
 				<ul

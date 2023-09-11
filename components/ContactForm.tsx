@@ -46,9 +46,7 @@ const ContactForm = (props: Props) => {
 					<div className="max-w-screen-md px-4 mx-auto">
 						<form action="#" className="grid gap-4 gap-y-6 lg:grid-cols-2">
 							<div>
-								<label
-									for="name"
-									className="block mb-2 text-base md:text-lg  text-white">
+								<label className="block mb-2 text-base md:text-lg  text-white">
 									Name
 								</label>
 								<input
@@ -60,9 +58,7 @@ const ContactForm = (props: Props) => {
 								/>
 							</div>
 							<div>
-								<label
-									for="email"
-									className="block mb-2 text-base md:text-lg  text-white">
+								<label className="block mb-2 text-base md:text-lg  text-white">
 									Email
 								</label>
 								<input
@@ -74,15 +70,12 @@ const ContactForm = (props: Props) => {
 								/>
 							</div>
 							<div className="sm:col-span-2">
-								<label
-									for="budget-estimated"
-									className="block mb-2 text-base md:text-lg  text-white">
+								<label className="block mb-2 text-base md:text-lg  text-white">
 									Estimated Budget
 								</label>
 								<select
 									title="budget"
 									id="budget-estimated"
-									rows="6"
 									className="bg-[rgba(1,1,4,.4)] block p-2.5  w-full text-base md:text-lg text-white rounded-lg shadow-sm border-[1px] border-[rgba(255,255,255,.2)] focus:ring-[rgb(22,2,152)] focus:border-[rgb(22,2,152)]    dark:focus:border-[rgb(22,2,152)]"
 									placeholder="Select One">
 									<option value="">Select One</option>
@@ -92,14 +85,11 @@ const ContactForm = (props: Props) => {
 								</select>
 							</div>
 							<div className="sm:col-span-2">
-								<label
-									for="summary"
-									className="block mb-2 text-base md:text-lg  text-white">
+								<label className="block mb-2 text-base md:text-lg  text-white">
 									Project summary
 								</label>
 								<textarea
 									id="summary"
-									rows="6"
 									className="bg-[rgba(1,1,4,.4)] block p-2.5  w-full text-base md:text-lg text-white rounded-lg shadow-sm border-[1px] border-[rgba(255,255,255,.2)] focus:ring-[rgb(22,2,152)] focus:border-[rgb(22,2,152)]    dark:focus:border-[rgb(22,2,152)]"
 									placeholder="Yout mini brief..."></textarea>
 							</div>
