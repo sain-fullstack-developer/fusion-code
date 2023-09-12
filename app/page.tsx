@@ -229,8 +229,8 @@ const Home = () => {
 
 	return (
 		<>
-			{!isLoading && <InitialPage />}
-			{isLoading && (
+			{isLoading && <InitialPage />}
+			{!isLoading && (
 				<>
 					<div className="z-50">
 						<Header
