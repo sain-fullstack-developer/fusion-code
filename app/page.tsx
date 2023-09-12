@@ -236,8 +236,8 @@ const Home = () => {
 						<Header
 							scrollBg={
 								serviceSectionView ||
-								workWithSectionView ||
-								clientReviewSectionView
+									workWithSectionView ||
+									clientReviewSectionView
 									? true
 									: false
 							}
@@ -261,8 +261,8 @@ const Home = () => {
 										data-loop="true"
 										data-wf-ignore="true"
 										data-beta-bgvideo-upgrade="false"
-										className="z-0 w-full h-full absolute grid place-items-center object-cover text-white">
-										<video loop muted id="video" autoPlay={true}>
+										className="z-0 w-full h-screen absolute grid place-items-center object-cover text-white">
+										<video loop muted id="video" autoPlay={true} className="h-full object-cover opacity-50">
 											<source
 												src="https://uploads-ssl.webflow.com/6478fa4e7e9547c7d81368ff/649d7617ba75cbd92761d297_abstract-cubic-shape-animation-loop-with-detailed-2022-05-09-23-05-33-utc (1)-transcode.mp4"
 												data-wf-ignore="true"></source>
@@ -274,12 +274,13 @@ const Home = () => {
 									<motion.div
 										ref={targetRef}
 										className="p-6 sm:p-0 text-white text-center z-20 relative">
-										<motion.h1 className="font-roc text-5xl md:text-7xl lg:text-8xl mb-10">
+										<motion.h1 className="font-roc text-4xl md:text-7xl lg:text-9xl mb-10 font-medium">
 											<motion.div
 												initial={{ opacity: 0, y: -400 }}
 												animate={{ opacity: 1, y: 0 }}
-												transition={{ duration: 1, delay: 0.4 }}>
-												Fusing Innovation
+												transition={{ duration: 1, delay: 0.4 }}
+												className="flex items-center flex-col lg:flex-row mb-1" >
+												Fusing <div className="border-[3px] border-[#3a383e] rounded-full px-6 py-2 lg:px-8 lg:py-4 backdrop-blur-sm bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text custom-text-stroke">Innovation</div>
 											</motion.div>
 											<motion.div
 												initial={{ opacity: 0, y: 400 }}
@@ -289,7 +290,7 @@ const Home = () => {
 											</motion.div>
 										</motion.h1>
 									</motion.div>
-									<div className="bg-black/30 z-10 w-full h-full top-0 left-0 absolute"></div>
+									<div className=" z-10 w-full h-full top-0 left-0 absolute"></div>
 								</motion.div>
 							</div>
 						</section>
@@ -396,16 +397,17 @@ const Home = () => {
 								transition={{ type: "spring", stiffness: 30 }}
 								className="p-4 sm:p-12 my-10 sm:my-20 relative">
 								<div className="absolute bg-radial h-full w-1/2 sm:w-full transform top-0"></div>
-								<div className="w-full p-[1px] rounded-lg bg-card relative">
-									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-16 text-content text-base z-10">
+								<div className="w-full p-[1px] rounded-lg  relative hover-trigger">
+									<div className="hover-state-indicator hover-line"></div>
+									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-4 lg:p-16 text-content text-base z-10">
 										<div className="text-center">
-											<h2 className="gray-text text-4xl font-roc mb-6 font-medium">
+											<h2 className="gray-text text-2xl font-roc mb-6 font-medium">
 												No fluff, no long processes, no bloated teams...
 											</h2>
-											<h2 className="gray-secondary text-3xl md:text-6xl font-roc font-medium mb-2">
+											<h2 className="gray-secondary text-2xl md:text-6xl font-roc font-medium mb-2">
 												Streamlined design and development.
 											</h2>
-											<h2 className="gray-secondary text-3xl md:text-6xl font-roc font-medium">
+											<h2 className="gray-secondary text-2xl md:text-6xl font-roc font-medium">
 												Swift and remarkable results.
 											</h2>
 										</div>
@@ -457,13 +459,12 @@ const Home = () => {
 											<h2
 												onClick={() => handleServiceNav(index)}
 												key={index}
-												className={`${
-													index === serviceNav
-														? "bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text"
-														: index !== serviceNav
+												className={`${index === serviceNav
+													? "bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text"
+													: index !== serviceNav
 														? "opacity-50"
 														: ""
-												} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 `}>
+													} cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 `}>
 												{service}
 											</h2>
 										);
@@ -477,13 +478,12 @@ const Home = () => {
 													<h2
 														onClick={() => handleServiceNav(index)}
 														key={index}
-														className={`${
-															index === serviceNav
-																? "gradients opacity-100"
-																: index !== serviceNav
+														className={`${index === serviceNav
+															? "gradients opacity-100"
+															: index !== serviceNav
 																? "opacity-50"
 																: ""
-														}
+															}
 														cursor-pointer text-[#222] text-3xl sm:text-4xl font-roc font-medium pb-4 md:pb-8 opacity-100`}>
 														{service}
 													</h2>
@@ -495,9 +495,8 @@ const Home = () => {
 									{dataLoaded && (
 										<div ref={servicesRef}>
 											<div
-												className={`${
-													isSecondDivVisible ? "opacity-100" : "opacity-0"
-												} transition-opacity duration-500 ease-in-out z-40 relative pt-20`}>
+												className={`${isSecondDivVisible ? "opacity-100" : "opacity-0"
+													} transition-opacity duration-500 ease-in-out z-40 relative pt-20`}>
 												{servicesCardData[servicesData].name.map((card, i) => {
 													return (
 														<ServicesCard
@@ -536,63 +535,66 @@ const Home = () => {
 										Exceptional work is the baseline, doing what we love is the
 										mission.
 									</h3>
-									<div className="border-[1px] rounded-xl p-4 border-card">
-										<div className="overflow-hidden w-full pb-2">
-											<div className="py-2 scroll-animate gap-4">
-												{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
-													return (
-														<div
-															key={index}
-															className="bg-border rounded-full w-full p-[1px]">
-															<Button
-																type="button"
-																circle={true}
-																className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
-																noArrow={true}>
-																Brand Strategy
-															</Button>
-														</div>
-													);
-												})}
+									<div className=" hover-trigger">
+										<div className="hover-state-indicator hover-line"></div>
+										<div className="border-[1px] rounded-xl p-4 border-[rgba(255,255,255,.1)]">
+											<div className="overflow-hidden w-full pb-2">
+												<div className="py-2 scroll-animate gap-4">
+													{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
+														return (
+															<div
+																key={index}
+																className="bg-border rounded-full w-full p-[1px]">
+																<Button
+																	type="button"
+																	circle={true}
+																	className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
+																	noArrow={true}>
+																	Brand Strategy
+																</Button>
+															</div>
+														);
+													})}
+												</div>
 											</div>
-										</div>
-										<div className="overflow-hidden w-full pb-4">
-											<div className="py-2 scroll-animate-right gap-6">
-												{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
-													return (
-														<div
-															key={index}
-															className="bg-border rounded-full w-full p-[1px]">
-															<Button
-																type="button"
-																circle={true}
-																className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
-																noArrow={true}>
-																Brand Strategy
-															</Button>
-														</div>
-													);
-												})}
+											<div className="overflow-hidden w-full pb-4">
+												<div className="py-2 scroll-animate-right gap-6">
+													{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
+														return (
+															<div
+																key={index}
+																className="bg-border rounded-full w-full p-[1px]">
+																<Button
+																	type="button"
+																	circle={true}
+																	className="bg-[#0c0228] rounded-full text-[#c2bad9] w-64 p-2"
+																	noArrow={true}>
+																	Brand Strategy
+																</Button>
+															</div>
+														);
+													})}
+												</div>
 											</div>
-										</div>
-										<div className="text-left">
-											<h3 className="gray-secondary font-roc text-2xl font-semibold pb-4">
-												The right talent, in the right place, at the right time.
-											</h3>
-											<div className="gray-secondary text-base sm:text-lg pb-4">
-												Jords+Co are a remarkable and meticulously curated
-												remote team located in the UK, Europe and the US
-												comprising of experts in their respective domains.
-											</div>
-											<div className="gray-secondary text-lg pb-4">
-												Your dedicated team is carefully chosen for your
-												project, ensuring a perfect match for its unique
-												requirements.
-											</div>
-											<div className="gray-secondary text-lg pb-4">
-												Our approach of handpicking individuals with specialised
-												skills, aligned interests, and exceptional suitability
-												unlocks unparalleled outcomes
+											<div className="text-left">
+												<h3 className="gray-secondary font-roc text-2xl font-semibold pb-4">
+													The right talent, in the right place, at the right time.
+												</h3>
+												<div className="gray-secondary text-base sm:text-lg pb-4">
+													Jords+Co are a remarkable and meticulously curated
+													remote team located in the UK, Europe and the US
+													comprising of experts in their respective domains.
+												</div>
+												<div className="gray-secondary text-lg pb-4">
+													Your dedicated team is carefully chosen for your
+													project, ensuring a perfect match for its unique
+													requirements.
+												</div>
+												<div className="gray-secondary text-lg pb-4">
+													Our approach of handpicking individuals with specialised
+													skills, aligned interests, and exceptional suitability
+													unlocks unparalleled outcomes
+												</div>
 											</div>
 										</div>
 									</div>
@@ -703,7 +705,7 @@ const Home = () => {
 											return (
 												<div
 													key={index}
-													className="transition-all ease-in-out duration-1000 transform p-6">
+													className="transition-all ease-in-out duration-1000 transform py-6">
 													<ClientReviewCard
 														name={data.name}
 														text={data.text}
@@ -736,10 +738,9 @@ const Home = () => {
 												return (
 													<li
 														onClick={() => handleFaqClick(index)}
-														className={`${
-															index === faqNavOn &&
+														className={`${index === faqNavOn &&
 															"transition-all border-[1px] border-[#3B3B40] rounded-lg gradients px-2 sm:px-4 py-1"
-														} text-base sm:text-lg font-semibold text-white cursor-pointer w-full whitespace-nowrap text-center`}
+															} text-base sm:text-lg font-semibold text-white cursor-pointer w-full whitespace-nowrap text-center`}
 														key={index}>
 														{faq}
 													</li>
@@ -753,9 +754,8 @@ const Home = () => {
 												initial={{ opacity: 0 }}
 												whileInView={{ opacity: 1 }}
 												transition={{ duration: 0.6 }}
-												className={`${
-													isSecondDivVisible ? "opacity-100" : "faqcard-animate"
-												} transition-all z-40 relative pt-20 list-none`}>
+												className={`${isSecondDivVisible ? "opacity-100" : "faqcard-animate"
+													} transition-all z-40 relative pt-20 list-none`}>
 												{faqCardData[faqDataState]?.name?.map((faq, index) => {
 													return (
 														<motion.li
