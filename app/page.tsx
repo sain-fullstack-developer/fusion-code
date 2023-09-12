@@ -22,6 +22,7 @@ import {
 	useScroll,
 	useTransform,
 	useInView,
+	AnimatePresence,
 } from "framer-motion";
 import InitialPage from "@/components/Loading";
 import TitleContent from "@/components/TitleContent";
@@ -36,10 +37,8 @@ import TitleIcon from "@/elements/TitleIcon";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
-
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
@@ -60,10 +59,10 @@ const Home = () => {
 	const extendedRef = useRef(null);
 	const scrollContactRef: any = useRef(null);
 	const servicesRef = useRef(null);
-	const faqCardRef = useRef<any>(null);
 	const servicesBlockRef = useRef(null);
 	const workWithBlockRef = useRef(null);
 	const clientBlockRef = useRef(null);
+	const faqCardRef = useRef(null);
 
 	const serviceSectionView = useInView(servicesBlockRef);
 	const workWithSectionView = useInView(servicesBlockRef);
@@ -97,10 +96,10 @@ const Home = () => {
 	}, []);
 
 	const onScrollToContactsEl: any = async () => {
-		window.scrollTo({
-			top: window.scrollY + scrollContactRef?.current?.offsetTop,
-			behavior: "smooth",
-		});
+		console.log(scrollContactRef);
+		if (scrollContactRef?.current) {
+			scrollContactRef?.current.scrollIntoView({ behavior: "smooth" });
+		}
 	};
 
 	const handleFaqClick = (index: number) => {
@@ -230,8 +229,8 @@ const Home = () => {
 
 	return (
 		<>
-			{isLoading && <InitialPage />}
-			{!isLoading && (
+			{!isLoading && <InitialPage />}
+			{isLoading && (
 				<>
 					<div className="z-50">
 						<Header
@@ -516,7 +515,7 @@ const Home = () => {
 							</motion.div>
 
 							<div className="px-4 sm:px-0 py-20 text-center border-t-[1px] border-card relative z-10">
-								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
+								<div className="absolute bg-radial h-full w-full transform left-0 top-0 -z-10"></div>
 								<div className="flex pb-6 justify-center">
 									<TitleIcon width={24} height={24} color="blue" />
 									<p className="ml-2 text-lg font-medium caption-text">
@@ -748,29 +747,35 @@ const Home = () => {
 											})}
 										</ul>
 									</div>
-									{dataLoaded && (
-										<motion.ul
-											initial={{ opacity: 0 }}
-											whileInView={{ opacity: 1 }}
-											transition={{ duration: 0.6 }}
-											className={`${
-												isSecondDivVisible ? "opacity-100" : "opacity-0"
-											} transition-opacity duration-300 ease-in-out z-40 relative pt-20 list-none`}>
-											{faqCardData[faqDataState]?.name?.map((faq, index) => {
-												return (
-													<motion.li
-														className={`text-lg text-white/80 cursor-pointer`}
-														key={index}>
-														<FaqCard
-															key={index}
-															question={faq.question}
-															answer={faq.answer}
-														/>
-													</motion.li>
-												);
-											})}
-										</motion.ul>
-									)}
+									<AnimatePresence>
+										{dataLoaded && (
+											<motion.ul
+												initial={{ opacity: 0 }}
+												whileInView={{ opacity: 1 }}
+												transition={{ duration: 0.6 }}
+												className={`${
+													isSecondDivVisible ? "opacity-100" : "faqcard-animate"
+												} transition-all z-40 relative pt-20 list-none`}>
+												{faqCardData[faqDataState]?.name?.map((faq, index) => {
+													return (
+														<motion.li
+															initial={{ opacity: 0 }}
+															animate={{ opacity: 1 }}
+															transition={{ duration: 4 }}
+															ref={faqCardRef}
+															className={`text-lg text-white/80 cursor-pointer transition-all ease-linear`}
+															key={index}>
+															<FaqCard
+																key={index}
+																question={faq.question}
+																answer={faq.answer}
+															/>
+														</motion.li>
+													);
+												})}
+											</motion.ul>
+										)}
+									</AnimatePresence>
 								</div>
 								<div className="py-10 z-40 relative md:py-20 w-full flex justify-center text-center">
 									<div>
@@ -788,7 +793,7 @@ const Home = () => {
 							</div>
 
 							<div className="min-h-screen text-center z-40 relative p-6 sm:p-0 bg-primary">
-								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
+								<div className="absolute bg-radial h-full w-full transform left-0 sm:left-auto top-0 -z-10"></div>
 								<TitleContent
 									headingClass="bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"
@@ -891,11 +896,10 @@ const Home = () => {
 								</div>
 							</div>
 						</motion.section>
-
 						<motion.section className="relative mt-[-60vh] h-[180vh] z-0 bg-primary">
 							<div className="mb-[-120vh] h-[320vh] w-full text-white bg-primary">
 								<div className="absolute top-[60%] sm:top-[40%] md:top-[50%] lg:top-[60%] transform bg-radial h-full w-full"></div>
-								<div className="grid place-items-center sticky top-[25vh]">
+								<div className="grid place-items-center sticky top-[25vh] lg:top-[10vh]">
 									<div
 										ref={scrollContactRef}
 										className="min-h-screen transition-all px-6 lg:px-10">

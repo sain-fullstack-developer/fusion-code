@@ -64,7 +64,7 @@ const Header = (props: Props) => {
 					menuOn
 						? "grid sm:place-items-center absolute left-5 sm:left-[14%] bg-black w-[90%] sm:w-fit p-6 rounded-lg ring-1 ring-gray-100 top-20"
 						: "hidden"
-				} lg:block fixed sm:left-[40%] flex justify-center backdrop-blur-lg z-50 p-3 bg-[rgba(5,5,46,.25)] rounded-lg border-[1px] border-[rgba(255,255,255,.16)]`}>
+				} top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all ease-linear lg:block fixed flex justify-center backdrop-blur-lg z-50 p-3 px-12 bg-[rgba(5,5,46,.25)] rounded-lg border-[1px] border-[rgba(255,255,255,.16)]`}>
 				<motion.ul
 					className={`${
 						lightMode

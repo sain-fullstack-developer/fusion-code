@@ -47,6 +47,9 @@ body {
 .card-animate {
 	animation: onclick-display 1s linear 1;
 }
+.faqcard-animate {
+	animation: onclick-faq 2s linear 1;
+}
 
 .gradients {
 	background: linear-gradient(90deg, #3b00ff, #c700ff 50%, #ff4747);
@@ -172,6 +175,15 @@ body {
 
 	100% {
 		transform: translateX(40%);
+	}
+}
+
+@keyframes onclick-faq {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 100%;
 	}
 }
 
