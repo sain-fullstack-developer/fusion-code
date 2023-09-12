@@ -27,8 +27,8 @@ const TitleIcon = (props: Props) => {
 		
 		<Image
 			src="/logo.PNG"
-			width={32}
-			height={32}
+			width={40}
+			height={40}
 			alt="logo"
 		/>
 	);

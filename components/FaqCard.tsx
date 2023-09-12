@@ -23,7 +23,7 @@ const FaqCard = (props: Props) => {
 	};
 
 	const iconStyle = {
-		transform: openAnswer ? "rotate(90deg)" : "rotate(0deg)",
+		transform: openAnswer ? "rotate(180deg)" : "rotate(0deg)",
 		transition: "transform 0.3s ease-in-out", 
 	};
 

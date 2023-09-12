@@ -337,7 +337,6 @@ export const faqNavList = [
 	"Starting a project",
 	"Design",
 	"Development",
-	"DesignWave",
 ];
 
 export const serviceNavs = [

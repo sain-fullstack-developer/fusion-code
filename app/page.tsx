@@ -295,8 +295,8 @@ const Home = () => {
 							</div>
 						</section>
 
-						<motion.section className={`z-20 relative pb-40 bg-primary`}>
-							<div className="z-0 w-full object-cover justify-center align-center flex absolute transform opacity-40">
+						<motion.section className={`z-20 relative pb-40 bg-primary overflow-x-hidden`}>
+							<div className=" z-0 w-full object-cover justify-center align-center flex absolute transform opacity-60 lg:opacity-40">
 								<svg
 									width="1200"
 									height="297"
@@ -396,7 +396,7 @@ const Home = () => {
 								whileInView={{ y: 0, opacity: 1 }}
 								transition={{ type: "spring", stiffness: 30 }}
 								className="p-4 sm:p-12 my-10 sm:my-20 relative">
-								<div className="absolute bg-radial h-full w-1/2 sm:w-full transform top-0"></div>
+								<div className="absolute bg-radial h-full w-1/2 transform top-0"></div>
 								<div className="w-full p-[1px] rounded-lg  relative hover-trigger">
 									<div className="hover-state-indicator hover-line"></div>
 									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-4 lg:p-16 text-content text-base z-10">
@@ -601,7 +601,7 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="min-h-screen bg-black py-10 lg:p-20 grid md:grid-cols-custom gap-6 relative z-10">
+							<div className="min-h-screen bg-black py-10 lg:p-48 grid md:grid-cols-custom gap-6 relative z-10">
 								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
 								<div className="m-4">
 									<TitleContent
@@ -614,7 +614,7 @@ const Home = () => {
 									/>
 									<GradientButton>Contact us</GradientButton>
 								</div>
-								<div className="grid place-items-center sm:place-items-stretch sm:grid-cols-2 gap-4 md:gap-6">
+								<div className="grid place-items-center sm:place-items-stretch sm:grid-cols-2 gap-8 md:gap-6">
 									<WorkWithUsCard />
 									<WorkWithUsCard />
 									<WorkWithUsCard />
@@ -623,7 +623,7 @@ const Home = () => {
 							</div>
 
 							<div
-								className="p-10 lg:p-20 bg-[#f4f1eb] min-h-screen"
+								className="p-10 lg:px-64 lg:pt-40 bg-image bg-[#f4f1eb] min-h-screen"
 								ref={workWithBlockRef}>
 								<div className="w-full lg:w-2/3 pb-6 lg:pb-20">
 									<TitleContent
@@ -636,7 +636,7 @@ const Home = () => {
 										iconColor="blue"
 									/>
 								</div>
-								<div className="bg-[rgba(255,255,255,.4)] border border-[rgba(255,255,255,.8)] p-8 md:p-16 rounded-lg grid md:grid-cols-2 lg:gap-10 gap-y-12">
+								<div className="bg-[#f4f1eb] border-2 border-[rgba(255,255,255,.8)] p-8 md:p-16 rounded-2xl grid md:grid-cols-2 lg:gap-10 gap-y-12">
 									<TitleContent
 										GradientTitle={true}
 										noIcon={true}
@@ -663,7 +663,7 @@ const Home = () => {
 									/>
 								</div>
 							</div>
-							<div className="bg-[#f4f1eb]">
+							<div className="bg-[#f4f1eb] bg-image">
 								<div className="overflow-hidden w-full pb-2">
 									<div className="py-2 scroll-animate gap-4">
 										{devSkills.map((skill, index) => {
@@ -686,7 +686,7 @@ const Home = () => {
 
 							<div
 								ref={clientBlockRef}
-								className="bg-[#f4f1eb] px-10 md:px-20 py-32 min-h-screen">
+								className="bg-[#f4f1eb] bg-image px-10 md:px-20 py-32 lg:px-64 lg:py-40 min-h-screen">
 								<TitleContent
 									GradientTitle={true}
 									caption="What people say"
@@ -733,14 +733,14 @@ const Home = () => {
 								</div>
 								<div className="max-w-3xl m-auto">
 									<div className="z-40 relative flex justify-center overflow-hidden">
-										<ul className="w-11/12 justify-items-start self-auto flex overflow-auto gap-10">
+										<ul className="w-11/12 justify-items-start self-auto flex items-center overflow-auto gap-10">
 											{faqNavList?.map((faq, index) => {
 												return (
 													<li
 														onClick={() => handleFaqClick(index)}
 														className={`${index === faqNavOn &&
-															"transition-all border-[1px] border-[#3B3B40] rounded-lg gradients px-2 sm:px-4 py-1"
-															} text-base sm:text-lg font-semibold text-white cursor-pointer w-full whitespace-nowrap text-center`}
+															" border-[1px] border-[#3B3B40] rounded-lg gradients px-2 lg:px-0 py-2"
+															} text-base text-white cursor-pointer w-full whitespace-nowrap text-center`}
 														key={index}>
 														{faq}
 													</li>
@@ -792,10 +792,10 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="min-h-screen text-center z-40 relative p-6 sm:p-0 bg-primary">
+							<div className="text-center z-40 relative p-6 sm:p-0 bg-primary">
 								<div className="absolute bg-radial h-full w-full transform left-0 sm:left-auto top-0 -z-10"></div>
 								<TitleContent
-									headingClass="bg-gradient-to-r from-[#6000FF] via-pink-500 to-fuchsia-500 text-transparent bg-clip-text text-4xl sm:text-6xl"
+									headingClass="text-white text-4xl sm:text-6xl"
 									textClass="text-white/60 text-xl mb-20"
 									title="Software for modern platforms"
 									text="We develop applications for mobile, web, wearables, and TV."
@@ -803,7 +803,7 @@ const Home = () => {
 									whileInView={{ y: 0, opacity: 1 }}
 									transition={{ type: "spring", stiffness: 30 }}
 								/>
-								<div className="grid gap-6 p-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 mb-20">
+								<div className="grid gap-6 p-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 mb-12 lg:mb-28">
 									{platformData.map((card, index) => {
 										return (
 											<IconTitle
@@ -825,7 +825,7 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="text-center pb-32 p-6 sm:p-0 bg-primary relative">
+							<div className="text-center pb-32 p-6 sm:p-0 bg-primary relative overflow-x-hidden">
 								<div className="z-0 w-full object-cover justify-center align-center flex absolute transform opacity-40 -top-10">
 									<svg
 										width="1200"

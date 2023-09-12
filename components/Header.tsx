@@ -46,7 +46,7 @@ const Header = (props: Props) => {
 			id="header"
 			className={`${
 				scrollBg ? "bg-black" : "bg-transparent"
-			} realtive min-h-[4.5rem] w-screen flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 lg:py-3 relative z-50`}>
+			} realtive min-h-[4.5rem] flex gap-4 lg:gap-0 lg:flex justify-between px-4 py-2 lg:py-3 relative z-50`}>
 			<div className="text-3xl self-center text-white font-roc font-bold flex">
 				<Image
 					src="/logo.png"
