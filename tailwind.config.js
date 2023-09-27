@@ -75,6 +75,14 @@ module.exports = {
 				card: "0 32px 64px rgba(1,1,255,.08)",
 			},
 		},
+		screens: {
+			xs: "375px",
+			sm: "640px",
+			md: "768px",
+			lg: "1024px",
+			xl: "1280px",
+			"2xl": "1536px",
+		},
 	},
 	plugins: [],
 };

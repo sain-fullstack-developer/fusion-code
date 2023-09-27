@@ -45,6 +45,7 @@ import "swiper/css/pagination";
 
 SwiperCore.use([Autoplay]);
 
+
 const Home = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [faqNavOn, setFaqNavOn] = useState(0);
@@ -54,6 +55,7 @@ const Home = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isSecondDivVisible, setIsSecondDivVisible] = useState(true);
 	const [dataLoaded, setDataLoaded] = useState(false);
+	const [menuOn, setMenuOn] = useState(false);
 	const [hue, setHue] = useState(0);
 	const targetRef = useRef(null);
 	const extendedRef = useRef(null);
@@ -96,7 +98,6 @@ const Home = () => {
 	}, []);
 
 	const onScrollToContactsEl: any = async () => {
-		console.log(scrollContactRef);
 		if (scrollContactRef?.current) {
 			scrollContactRef?.current.scrollIntoView({ behavior: "smooth" });
 		}
@@ -185,7 +186,7 @@ const Home = () => {
 				},
 			},
 			{
-				breakpoint: 600,
+				breakpoint: 820,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
@@ -241,14 +242,15 @@ const Home = () => {
 									? true
 									: false
 							}
+							menuOn={menuOn}
 							scrollContacts={onScrollToContactsEl}
 						/>
 					</div>
 					<motion.main
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						transition={{ duration: 2 }}
-						className="bg-primary -z-10">
+						transition={{ duration: 4 }}
+						className={`bg-primary -z-10 ${menuOn && "overflow-y-hidden"}`}>
 						<section
 							ref={targetRef}
 							className="relative mt-[-30vh] h-[140vh] z-0">
@@ -273,8 +275,8 @@ const Home = () => {
 									</div>
 									<motion.div
 										ref={targetRef}
-										className="p-6 sm:p-0 text-white text-center z-20 relative">
-										<motion.h1 className="font-roc text-4xl md:text-7xl lg:text-9xl mb-10 font-medium">
+										className="xs:p-6 sm:p-0 text-white text-center z-20 relative">
+										<motion.h1 className="font-roc text-4xl md:text-7xl xl:text-9xl mb-10 font-medium">
 											<motion.div
 												initial={{ opacity: 0, y: -400 }}
 												animate={{ opacity: 1, y: 0 }}
@@ -295,7 +297,7 @@ const Home = () => {
 							</div>
 						</section>
 
-						<motion.section className={`z-20 relative pb-40 bg-primary overflow-x-hidden`}>
+						<motion.section className={`z-20 relative lg:pb-40 bg-primary overflow-x-hidden`}>
 							<div className=" z-0 w-full object-cover justify-center align-center flex absolute transform opacity-60 lg:opacity-40">
 								<svg
 									width="1200"
@@ -395,11 +397,11 @@ const Home = () => {
 								initial={{ y: 100, opacity: 0 }}
 								whileInView={{ y: 0, opacity: 1 }}
 								transition={{ type: "spring", stiffness: 30 }}
-								className="p-4 sm:p-12 my-10 sm:my-20 relative">
+								className="p-4 sm:p-12 my-10 md:mb-20 lg:my-20 lg:w-3/4 mx-auto relative">
 								<div className="absolute bg-radial h-full w-1/2 transform top-0"></div>
 								<div className="w-full p-[1px] rounded-lg  relative hover-trigger">
 									<div className="hover-state-indicator hover-line"></div>
-									<div className="bg-black shadow-card border-[1px] border-[rgba(255,255,255,.1)] rounded-2xl p-4 lg:p-16 text-content text-base z-10">
+									<div className="bg-black shadow-card border-[1px] border-[#3A3A3E] rounded-2xl p-4 lg:p-16 text-content text-base z-10">
 										<div className="text-center">
 											<h2 className="gray-text text-2xl font-roc mb-6 font-medium">
 												No fluff, no long processes, no bloated teams...
@@ -525,9 +527,9 @@ const Home = () => {
 									<h2 className="gray-secondary text-4xl md:text-6xl font-roc font-medium">
 										A curated collective of
 									</h2>
-									<motion.h2 className="gradients text-4xl md:text-6xl font-roc font-medium animate-curative-text">
+									<motion.p className="gradients text-4xl md:text-6xl font-roc font-medium animate-curative-text">
 										{curativeHeads[currentIndex]}
-									</motion.h2>
+									</motion.p>
 								</div>
 
 								<div className="px-4 sm:px-20 lg:px-32">
@@ -539,8 +541,8 @@ const Home = () => {
 										<div className="hover-state-indicator hover-line"></div>
 										<div className="border-[1px] rounded-xl p-4 border-[rgba(255,255,255,.1)]">
 											<div className="overflow-hidden w-full pb-2">
-												<div className="py-2 scroll-animate gap-4">
-													{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
+												<div className="py-2 scroll-animate gap-4" id="carousel-container">
+													{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((e, index) => {
 														return (
 															<div
 																key={index}
@@ -557,9 +559,10 @@ const Home = () => {
 													})}
 												</div>
 											</div>
-											<div className="overflow-hidden w-full pb-4">
-												<div className="py-2 scroll-animate-right gap-6">
-													{[1, 2, 3, 4, 5, 6, 7].map((e, index) => {
+
+											<div className="overflow-hidden w-full pb-2">
+												<div className="py-2 scroll-animate-right gap-4" id="carousel-container">
+													{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((e, index) => {
 														return (
 															<div
 																key={index}
@@ -576,6 +579,7 @@ const Home = () => {
 													})}
 												</div>
 											</div>
+
 											<div className="text-left">
 												<h3 className="gray-secondary font-roc text-2xl font-semibold pb-4">
 													The right talent, in the right place, at the right time.
@@ -601,7 +605,7 @@ const Home = () => {
 								</div>
 							</div>
 
-							<div className="min-h-screen bg-black py-10 lg:p-48 grid md:grid-cols-custom gap-6 relative z-10">
+							<div className="min-h-screen bg-black py-10  md:px-8 lg:p-48 grid lg:grid-cols-custom gap-6 relative z-10">
 								<div className="absolute bg-radial h-full w-full transform top-0 -z-10"></div>
 								<div className="m-4">
 									<TitleContent
@@ -614,7 +618,7 @@ const Home = () => {
 									/>
 									<GradientButton>Contact us</GradientButton>
 								</div>
-								<div className="grid place-items-center sm:place-items-stretch sm:grid-cols-2 gap-8 md:gap-6">
+								<div className="grid place-items-center md:-mt-28 lg:mt-0 sm:place-items-stretch sm:grid-cols-2 gap-8 md:gap-6">
 									<WorkWithUsCard />
 									<WorkWithUsCard />
 									<WorkWithUsCard />
@@ -636,7 +640,7 @@ const Home = () => {
 										iconColor="blue"
 									/>
 								</div>
-								<div className="bg-[#f4f1eb] border-2 border-[rgba(255,255,255,.8)] p-8 md:p-16 rounded-2xl grid md:grid-cols-2 lg:gap-10 gap-y-12">
+								<div className="bg-[#f4f1eb] border-2 border-[rgba(255,255,255,.8)] p-8 md:p-8 lg:p-16 gap-8 text-justify rounded-2xl grid md:grid-cols-2 lg:gap-10 gap-y-12">
 									<TitleContent
 										GradientTitle={true}
 										noIcon={true}
@@ -664,7 +668,7 @@ const Home = () => {
 								</div>
 							</div>
 							<div className="bg-[#f4f1eb] bg-image">
-								<div className="overflow-hidden w-full pb-2">
+								<div className="overflow-hidden w-full ">
 									<div className="py-2 scroll-animate gap-4">
 										{devSkills.map((skill, index) => {
 											return (
@@ -686,7 +690,7 @@ const Home = () => {
 
 							<div
 								ref={clientBlockRef}
-								className="bg-[#f4f1eb] bg-image px-10 md:px-20 py-32 lg:px-64 lg:py-40 min-h-screen">
+								className="bg-[#f4f1eb] bg-image px-10  py-32 lg:px-64 lg:py-40 min-h-screen md:min-h-full lg:min-h-screen">
 								<TitleContent
 									GradientTitle={true}
 									caption="What people say"
@@ -733,14 +737,14 @@ const Home = () => {
 								</div>
 								<div className="max-w-3xl m-auto">
 									<div className="z-40 relative flex justify-center overflow-hidden">
-										<ul className="w-11/12 justify-items-start self-auto flex items-center overflow-auto gap-10">
+										<ul className="w-11/12 justify-items-start self-auto flex items-center scrollbar-hidden overflow-auto gap-10">
 											{faqNavList?.map((faq, index) => {
 												return (
 													<li
 														onClick={() => handleFaqClick(index)}
 														className={`${index === faqNavOn &&
 															" border-[1px] border-[#3B3B40] rounded-lg gradients px-2 lg:px-0 py-2"
-															} text-base text-white cursor-pointer w-full whitespace-nowrap text-center`}
+															} text-base text-white cursor-pointer w-full whitespace-nowrap text-center scrollbar-hidden`}
 														key={index}>
 														{faq}
 													</li>
@@ -753,9 +757,9 @@ const Home = () => {
 											<motion.ul
 												initial={{ opacity: 0 }}
 												whileInView={{ opacity: 1 }}
-												transition={{ duration: 0.6 }}
+												transition={{ duration: 0.3 }}
 												className={`${isSecondDivVisible ? "opacity-100" : "faqcard-animate"
-													} transition-all z-40 relative pt-20 list-none`}>
+													} transition-all z-40 relative pt-16 list-none`}>
 												{faqCardData[faqDataState]?.name?.map((faq, index) => {
 													return (
 														<motion.li
@@ -899,13 +903,14 @@ const Home = () => {
 						<motion.section className="relative mt-[-60vh] h-[180vh] z-0 bg-primary">
 							<div className="mb-[-120vh] h-[320vh] w-full text-white bg-primary">
 								<div className="absolute top-[60%] sm:top-[40%] md:top-[50%] lg:top-[60%] transform bg-radial h-full w-full"></div>
-								<div className="grid place-items-center sticky top-[25vh] lg:top-[10vh]">
+								<div className="grid place-items-center sticky top-[5vh]  md:top-[10vh]">
 									<div
-										ref={scrollContactRef}
-										className="min-h-screen transition-all px-6 lg:px-10">
+										className="min-h-screen md:min-h-[60vh] lg:min-h-screen transition-all px-6 lg:px-10">
 										<ContactForm />
 									</div>
-									<Footer />
+									<div ref={scrollContactRef}>
+										<Footer />
+									</div>
 								</div>
 							</div>
 						</motion.section>

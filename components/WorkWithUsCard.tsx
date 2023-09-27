@@ -4,7 +4,7 @@ type Props = {};
 
 const WorkWithUsCard = (props: Props) => {
 	return (
-		<div className=" w-11/12 hover-trigger bg-[#06060A]">
+		<div className=" w-11/12 hover-trigger bg-[#06060A] rounded-xl">
 			<div className="hover-state-indicator hover-line"></div>
 			<div className="rounded-2xl lg:p-8 p-4 w-full h-full border-[1px] flex flex-col items-start border-[#3B3B40]">
 				<div className=" w-12 h-12 rounded-lg grid place-items-center">
