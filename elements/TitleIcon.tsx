@@ -26,7 +26,7 @@ const TitleIcon = (props: Props) => {
 		// </svg>
 		
 		<Image
-			src="/fusion/headingLogo.png"
+			src="/fusion/fusion-logo-large.png"
 			width={40}
 			height={40}
 			alt="logo"
